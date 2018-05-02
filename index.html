@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="baidu-site-verification" content="QXwvt8DGet" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>Holmofy-胡飞飞的个人网站</title>
+    <style>
+    /* css reset */
+    body, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+    li {
+        list-style: none;
+    }
+    /* ulitity */
+    .clearfix:after {
+        content: "";
+        visibility: hidden;
+        display: block;
+        clear: both;
+    }
+    /* icomoon */
+    @font-face {
+        font-family: 'icomoon';
+        src: url('fonts/icomoon.eot?ao8grk');
+        src: url('fonts/icomoon.eot?ao8grk#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?ao8grk') format('truetype'),
+        url('fonts/icomoon.woff?ao8grk') format('woff'),
+        url('fonts/icomoon.svg?ao8grk#icomoon') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+    [class^="ic-"], [class*=" ic-"] {
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'icomoon' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .ic-blog:before {
+        color: rgb(250, 65, 82);
+        content: "\e906";
+    }
+    .ic-csdn:before {
+        color: rgb(230, 0, 2);
+        content: "\e900";
+    }
+    .ic-douban:before {
+        color: rgb(8, 147, 67);
+        content: "\e901";
+    }
+    .ic-github:before {
+        color: rgb(3, 4, 16);
+        content: "\e902";
+    }
+    .ic-qq:before {
+        color: rgb(71, 148, 253);
+        content: "\e903";
+    }
+    .ic-qzone:before {
+        color: rgb(254, 190, 32);
+        content: "\e904";
+    }
+    .ic-weixin:before {
+        color: rgb(2, 215, 55);
+        content: "\e905";
+    }
+    /* content */
+    html, body {
+        width: 100vw;
+        height: 100vh;
+    }
+    body {
+        color: #fff;
+        font-size: 17px;
+        font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "宋体", simsun, sans-serif;
+        background-color: rgba(255, 255, 255, 1);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: 50% 50%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(img/bg.jpg);
+        -webkit-transition: All 1.2s ease;
+        -moz-transition: All 1.2s ease;
+        -o-transition: All 1.2s ease;
+        -ms-transition: All 1.2s ease;
+        transition: All 1.2s ease;
+        animation: fadeIn 1.2s;
+        -moz-animation: fadeIn 1.2s;	/* Firefox */
+        -webkit-animation: fadeIn 1.2s;	/* Safari 和 Chrome */
+        -o-animation: fadeIn 1.2s;	/* Opera */
+    }
+    @keyframes fadeIn {
+        0% {
+            filter: grayscale(0.1) blur(2px);
+            transform: translateX(-50vw) rotate(10deg);
+        }
+        100% {}
+    }
+    /* Firefox */
+    @-moz-keyframes fadeIn {
+        0% {
+            -moz-filter: grayscale(0.1) blur(2px);
+            -moz-transform: translateX(-50vw) rotate(10deg);
+        }
+        100% {}
+    }
+    /* Safari 和 Chrome */
+    @-webkit-keyframes fadeIn {
+        0% {
+            -webkit-filter: grayscale(0.1) blur(2px);
+            -webkit-transform: translateX(-50vw) rotate(10deg);
+        }
+        100% {}
+    }
+    /* Opera */
+    @-o-keyframes fadeIn {
+        0% {
+            -o-filter: grayscale(0.1) blur(2px);
+            -o-transform: translateX(-50vw) rotate(10deg);
+        }
+        100% {}
+    }
+    #container {
+        position: absolute;
+        left: 50vw;
+        top: 24vh;
+        width: 90vw;
+        margin-left: -45vw;
+        animation: fadeIn;
+    }
+    #title {
+        text-align: center;
+        font-size: 20px;
+        font-weight: normal;
+        text-shadow: 4px 2px 8px black;
+        cursor: pointer;
+    }
+    #container ul {
+        width: 76%;
+        margin: 0 auto;
+        padding: 18px;
+        background: rgba(6, 6, 6, 0.3);
+        border-radius: 10px;
+    }
+    #container li {
+        width: 100px;
+        height: 32px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #container li:hover i{
+    	transform:scale(1.4);
+    }
+    #container li i {
+        float: left;
+        transition: all 0.3s;
+    }
+    a {
+        text-decoration: none;
+        color: #fff;
+        vertical-align: middle;
+        transition: color .25s ease-out .1s;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    #next-img{
+    	width: 0;
+    	height: 0;
+    	display: inline;
+    }
+    @media (min-width: 641px) and (max-width:770px) {
+        #container ul {
+            width: 70%;
+        }
+    }
+    @media (min-width: 771px) {
+        #container ul {
+            width: 40%;
+        }
+    }
+    @media (min-width: 990px) {
+        #container ul {
+            width: 30%;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1 id="title">胡飞飞的个人网站</h1>
+        <ul class="clearfix">
+            <li>
+                <a id="blog" href="https://blog.hufeifei.cn">
+                    <i class="ic-blog"></i><span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a id="csdn" href="http://blog.csdn.net/holmofy">
+                    <i class="ic-csdn"></i><span>CSDN</span>
+                </a>
+            </li>
+            <li>
+                <a id="github" href="https://github.com/holmofy">
+                    <i class="ic-github"></i><span>Github</span>
+                </a>
+            </li>
+            <li>
+                <a id="douban" href="https://www.douban.com/people/160018790/">
+                    <i class="ic-douban"></i><span>Douban</span>
+                </a>
+            </li>
+            <li>
+                <a id="qq" href="https://www.hufeifei.cn/qq.html">
+                    <i class="ic-qq"></i><span>QQ</span>
+                </a>
+            </li>
+            <li>
+                <a id="wechat" href="https://www.hufeifei.cn/wechat.html">
+                    <i class="ic-weixin"></i><span>Wechat</span>
+                </a>
+            </li>
+            <li>
+                <a id="qzone" href="http://user.qzone.qq.com/1938304905">
+                    <i class="ic-qzone"></i><span>QZone</span>
+                </a>
+            </li>
+        </ul>
+        <span id="next-img"></span>
+    </div>
+    <script>
+    (function(){
+    	function randomInt(x) {
+        	return Math.floor(Math.random() * x);
+    	}
+    	function nextImgUrl(){
+    		return "url(image/" + randomInt(210) + ".jpg";
+    	}
+
+    	var oNextImg = document.getElementById("next-img");
+    	oNextImg.style.backgroundImage = nextImgUrl();
+
+    	function changeBg() {
+        	document.body.style.backgroundImage = oNextImg.style.backgroundImage;
+        	oNextImg.style.backgroundImage = nextImgUrl();
+    	}
+    	function loop(){
+    		return setInterval(changeBg, 6000);
+    	}
+
+    	var timer = loop();
+	    document.getElementById("title").onclick = function(){
+	    	if(timer) clearInterval(timer);
+	    	changeBg();
+	    	timer = loop();
+	    };
+	    changeBg();
+    })();
+    </script>
+</body>
+
+</html>
