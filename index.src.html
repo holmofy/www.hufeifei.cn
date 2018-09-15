@@ -336,7 +336,7 @@
 </div>
 <script>
     (function () {
-        var imagesHash = [
+        var hash = [
             "vzpzg7cj21hc1hcgmq",
             "w1vunfbj20xc0irjtv",
             "w26l9bqj20xc0m80w2",
@@ -564,29 +564,29 @@
             return Math.floor(Math.random() * x);
         }
 
-        function nextImgUrl() {
-            return "url(https://ww1.sinaimg.cn/large/bda5cd74gy1fro" + imagesHash[randomInt(imagesHash.length)] + ".jpg";
+        function next() {
+            return "url(https://ww1.sinaimg.cn/large/bda5cd74gy1fro" + hash[randomInt(hash.length)] + ".jpg";
         }
 
-        var oNextImg = document.getElementById("next-img");
-        oNextImg.style.backgroundImage = nextImgUrl();
+        var oImg = document.getElementById("next-img");
+        oImg.style.backgroundImage = next();
 
-        function changeBg() {
-            document.body.style.backgroundImage = oNextImg.style.backgroundImage;
-            oNextImg.style.backgroundImage = nextImgUrl();
+        function change() {
+            document.body.style.backgroundImage = oImg.style.backgroundImage;
+            oImg.style.backgroundImage = next();
         }
 
         function loop() {
-            return setInterval(changeBg, 8000);
+            return setInterval(change, 8000);
         }
 
-        var timer = loop();
+        var t = loop();
         document.getElementById("title").onclick = function () {
-            if (timer) clearInterval(timer);
-            changeBg();
-            timer = loop();
+            if (t) clearInterval(t);
+            change();
+            t = loop();
         };
-        changeBg();
+        change();
     })();
 </script>
 </body>
