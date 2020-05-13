@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume-胡飞飞的简历</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_841402_zihn169zpnh.css" rel="stylesheet">
+    <style>
+        body {
+            width: 800px;
+            margin: 100px auto;
+            color: #666;
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu;
+            font-size: 16px;
+            position: relative;
+        }
+
+        body:after {
+            content: ' ';
+            position: absolute;
+            bottom: -100px;
+            right: -40px;
+            border-left: 50px solid transparent;
+            border-top: 50px solid transparent;
+            border-bottom: 50px solid #CC8C8C;
+            border-right: 50px solid #CC8C8C;
+        }
+
+        a {
+            color: #666;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: .8em 0;
+        }
+
+        ul > li:before {
+            content: "\e69d";
+            font-family: "iconfont" !important;
+            margin-right: .3em;
+        }
+
+        dd {
+            margin: 0;
+        }
+
+        h3.ic-target {
+            font-size: 20px;
+            color: #933636;
+        }
+
+        h3:before {
+            margin-right: .3em;
+        }
+
+        dt:after {
+            content: '：';
+        }
+
+        .iconfont {
+            color: #CC8C8C;
+        }
+
+        header {
+            display: flex;
+            height: 120px;
+        }
+
+        section > h3 + * {
+            margin-left: 2em;
+        }
+
+        #name {
+            flex: 1;
+            color: white;
+            position: relative;
+        }
+
+        #name .decorate {
+            position: absolute;
+            left: -60px;
+            top: 0;
+            width: 40px;
+            height: 100%;
+            background: #CC8C8C;
+        }
+
+        #name .decorate:before {
+            content: ' ';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            border-left: 20px solid white;
+            border-top: 20px solid white;
+            border-bottom: 20px solid #CC8C8C;
+            border-right: 20px solid #CC8C8C;
+        }
+
+        #name .decorate:after {
+            content: ' ';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            border-right: 20px solid white;
+            border-bottom: 20px solid white;
+            border-top: 20px solid #CC8C8C;
+            border-left: 20px solid #CC8C8C;
+        }
+
+        #name .decorate-grey {
+            position: absolute;
+            left: -20px;
+            background: #BC7777;
+            width: 20px;
+            height: 100%;
+        }
+
+        #name .decorate-grey:before {
+            content: ' ';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            border-right: 10px solid white;
+            border-top: 10px solid white;
+            border-bottom: 10px solid #BC7777;
+            border-left: 10px solid #BC7777;
+        }
+
+        #name .decorate-grey:after {
+            content: ' ';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-left: 10px solid white;
+            border-bottom: 10px solid white;
+            border-top: 10px solid #BC7777;
+            border-right: 10px solid #BC7777;
+        }
+
+        #name .wrapper {
+            width: 220px;
+            height: 80px;
+            background: #CC8C8C;
+            padding: 20px 40px;
+            position: relative;
+            border-radius: 0 8px 8px 0;
+        }
+
+        #name h1, h2 {
+            margin: 0;
+        }
+
+        #name h2 {
+            margin-top: 10px;
+        }
+
+        #contact {
+            width: 300px;
+            display: flex;
+            flex-wrap: wrap;
+            color: #933636;
+            margin: 0 20px;
+            line-height: 30px;
+        }
+
+        #contact a {
+            color: #933636;
+        }
+
+        #contact dt {
+            width: 80px;
+            text-align: right;
+        }
+
+        #contact dt i {
+            margin-right: 4px;
+        }
+
+        #contact dd {
+            width: 220px;
+        }
+
+        #avatar {
+            height: 120px;
+        }
+
+        #base-info {
+            display: flex;
+            margin-left: 2em;
+        }
+
+        #base-info dd {
+            margin-right: 4em;
+            text-align: left;
+        }
+
+        #resume {
+            width: 100%;
+            text-align: center;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        #resume thead > tr {
+            font-weight: bolder;
+            border-bottom: 8px solid transparent;
+        }
+
+        #resume td:nth-child(1) {
+            width: 20%;
+        }
+
+        #resume td:nth-child(2) {
+            width: 20%;
+        }
+
+        #resume td:nth-child(3) {
+            width: 30%;
+        }
+
+        #resume td:nth-child(4) {
+            width: 20%;
+        }
+
+        #projects article > div {
+            margin: .8em 0;
+        }
+
+        #professional {
+            text-indent: 2em;
+        }
+
+        #in-university {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 2em;
+        }
+
+        #in-university li {
+            width: 50%;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div id="name">
+        <div class="decorate"></div>
+        <div class="decorate-grey"></div>
+        <div class="wrapper">
+            <h1>胡飞飞</h1>
+            <h2>Java高级工程师</h2>
+        </div>
+    </div>
+    <dl id="contact">
+        <dt><i class="iconfont ic-phone"></i>电话</dt>
+        <dd><a href="tel:187-2023-2389">187-2023-2389</a></dd>
+        <dt><i class="iconfont ic-mail"></i>邮箱</dt>
+        <dd><a href="mailto:luofei.hff@alibaba-inc.com">luofei.hff@alibaba-inc.com</a></dd>
+        <dt><i class="iconfont ic-home"></i>主页</dt>
+        <dd><a href="https://www.hufeifei.cn">hufeifei.cn</a></dd>
+        <dt><i class="iconfont ic-wechat"></i>微信</dt>
+        <dd><a href="https://www.hufeifei.cn/wechat.html">holmofy</a></dd>
+    </dl>
+    <img id="avatar" src="/avatar-sm.png" alt="职业照">
+</header>
+<main>
+    <section>
+        <h3 class="iconfont ic-target">个人信息</h3>
+        <dl id="base-info">
+            <dt>出生年月</dt>
+            <dd>1996-07</dd>
+            <dt>籍贯</dt>
+            <dd>江西九江</dd>
+            <dt>学历程度</dt>
+            <dd>本科</dd>
+            <dt>现居地</dt>
+            <dd>余杭</dd>
+        </dl>
+    </section>
+    <section>
+        <h3 class="iconfont ic-target">专业技能</h3>
+        <ul id="skills">
+            <li>计算机基础扎实，熟练掌握Java 语言，熟悉集合、多线程以及常用开源工具库的使用；</li>
+            <li>熟练掌握HTML、CSS、JS、jQuery、ES6 等Web 技术，有React 的项目经验；</li>
+            <li>熟悉Spring、SpringBoot、Hibernate、Mybatis 等主流框架的使用；</li>
+            <li>熟悉主流关系型数据库的存储原理，有一定的MySQL 索引调优经验；</li>
+            <li>熟悉Lucene 索引基本存储原理，熟练掌握ElasticSearch 搜索引擎的应用；</li>
+            <li>对JVM 的原理有初步理解，包括垃圾回收机制和类加载机制；</li>
+            <li>熟练使用常见的Linux 命令，熟悉Nginx、Docker，有线上问题的排查经验；</li>
+        </ul>
+    </section>
+    <section>
+        <h3 class="iconfont ic-target">工作履历</h3>
+        <table id="resume">
+            <thead>
+            <tr>
+                <td>在职时间</td>
+                <td>所属行业</td>
+                <td>公司名称</td>
+                <td>担任职位</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>2018.3~2020.3</td>
+                <td>电子商务</td>
+                <td><a href="https://www.topchitu.com/" target="_blank">杭州达西信息技术有限公司</a></td>
+                <td>Java开发工程师</td>
+            </tr>
+            <tr>
+                <td>2020.4～至今</td>
+                <td>电子商务</td>
+                <td><a href="https://baike.baidu.com/item/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E9%9B%86%E5%9B%A2" target="_blank">阿里巴巴网络技术有限公司</a>
+                </td>
+                <td>Java高级工程师</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h3 class="iconfont ic-target">项目经验</h3>
+        <div id="projects">
+            <article>
+                <div><b>项目名称：</b><a href="https://crm.topchitu.com" target="_blank">赤兔CRM</a></div>
+                <div>
+                    <b>项目描述：</b>
+                    <span>
+                    系统主要为淘宝卖家提供了店铺客户管理功能，并支持用短信等方式对客户进行
+                    营销、关怀，并支持对客户评价、短信回复进行管理，同时提供了销售统计等各种报表。
+                </span>
+                </div>
+                <div>
+                    <b>涉及技术：</b>
+                    <span>SpringBoot、SpringMVC、SpringData JPA、MySQL、ElasticSearch、Redis、Dubbo。</span>
+                </div>
+                <div>
+                    <b>主要职责：</b>
+                    <span>小组的后端开发、部分前端代码(React)的编写、系统的部署上线以及日常维护；</span>
+                </div>
+                <div>
+                    <b>工作成就：</b>
+                    <ol>
+                        <li>独立完成了“流程化营销”的后端核心功能，上线数月便有几百家店铺在使用该功能；</li>
+                        <li>修改了后端调度服务的数据库连接选择器的设计，提高了系统的伸缩性；</li>
+                        <li>实现了通用的调度开关机制，为双十一等大促提供了保障；</li>
+                        <li>优化淘宝订单同步逻辑，将原有的抓取速度提升了数倍；</li>
+                        <li>独立实现了一个基于ElasticSearch 的客户分组，为店铺提供了全维度的客户搜索功能；</li>
+                        <li>完成了从交易线同步归档订单的功能，为店铺提供了更丰富的客户数据；</li>
+                        <li>实现了沉睡客户的ElasticSearch 数据归档的功能，降低了服务器成本。</li>
+                    </ol>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section>
+        <h3 class="iconfont ic-target">教育背景</h3>
+        <div id="education">
+            <b>2014年9月~2018年7月&nbsp;江西农业大学</b>
+            <p id="professional">
+                <span>计算机与信息工程学院</span>
+                <span>网络工程专业（排名:1/41）</span>
+            </p>
+            <b>在校经历：</b>
+            <ul id="in-university">
+                <li>软件设计师资格证(16215360098)</li>
+                <li>网络工程师资格证(17124360048)</li>
+                <li>每学期均获得专业一等奖学金</li>
+                <li>2015年度被评为"校三好学生"</li>
+                <li>2015~2016年度被评为优秀学生干部</li>
+                <li>2016年度获得国家励志奖学金</li>
+                <li>2017年度获得国家励志奖学金</li>
+                <li>2018年被评为"优秀毕业生"</li>
+            </ul>
+        </div>
+    </section>
+    <section id="evaluation">
+        <h3 class="iconfont ic-target">自我评价</h3>
+        <ul>
+            <li>有良好的设计和编码品味，并热爱编程，学习能力好，喜欢钻研；</li>
+            <li>对计算机行业充满热情，技术视野开阔，大学里用MFC 写过桌面应用，开发过安卓App；</li>
+            <li>拥有强烈的责任心，并具有较高的执行力</li>
+        </ul>
+    </section>
+</main>
+</body>
+
+</html>
