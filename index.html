@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="baidu-site-verification" content="QXwvt8DGet"/>
-    <meta name="Description" content="Author: Holmofy(胡飞飞), Content: 胡飞飞的个人网站"/>
+    <meta charset="UTF-8" />
+    <meta name="baidu-site-verification" content="QXwvt8DGet" />
+    <meta name="Description" content="Author: Holmofy(胡飞飞), Content: 胡飞飞的个人网站" />
     <meta name="viewport"
-          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>Holmofy-胡飞飞的个人网站</title>
-    <link href="//at.alicdn.com/t/font_841402_zihn169zpnh.css" rel="stylesheet">
+    <link href="//at.alicdn.com/t/font_841402_t1qrutv8ydh.css" rel="stylesheet">
     <style>
         /* css reset */
         body,
@@ -76,7 +77,7 @@
             color: #fff;
             font-size: 17px;
             font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", "Microsoft YaHei", SimHei, "宋体", simsun, sans-serif;
-            background-color: #937a62;
+            background-color: rgba(0, 0, 0, 0.05);
             background-repeat: no-repeat;
             background-attachment: fixed;
             -webkit-background-size: cover;
@@ -88,7 +89,6 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            background-image: url(image/211.jpg);
             -webkit-transition: All 1.2s ease;
             -moz-transition: All 1.2s ease;
             -o-transition: All 1.2s ease;
@@ -120,8 +120,8 @@
                 -moz-filter: grayscale(0.1) blur(2px);
                 -moz-transform: translateX(-50vw) rotate(10deg);
             }
-            100% {
-            }
+
+            100% {}
         }
 
         /* Safari 和 Chrome */
@@ -130,8 +130,8 @@
                 -webkit-filter: grayscale(0.1) blur(2px);
                 -webkit-transform: translateX(-50vw) rotate(10deg);
             }
-            100% {
-            }
+
+            100% {}
         }
 
         /* Opera */
@@ -140,8 +140,8 @@
                 -o-filter: grayscale(0.1) blur(2px);
                 -o-transform: translateX(-50vw) rotate(10deg);
             }
-            100% {
-            }
+
+            100% {}
         }
 
         @keyframes fadeIn {
@@ -149,8 +149,8 @@
                 filter: grayscale(0.1) blur(2px);
                 transform: translateX(-50vw) rotate(10deg);
             }
-            100% {
-            }
+
+            100% {}
         }
 
         #container {
@@ -222,7 +222,7 @@
             text-align: center;
         }
 
-        #footer > * {
+        #footer>* {
             opacity: .9;
         }
 
@@ -232,12 +232,6 @@
 
         #footer a:hover {
             opacity: .8;
-        }
-
-        #next-img {
-            width: 0;
-            height: 0;
-            display: inline;
         }
 
         @media (min-width: 641px) and (max-width: 770px) {
@@ -257,158 +251,278 @@
                 width: 30%;
             }
         }
+
+        #float-btns {
+            position: fixed;
+            bottom: 60px;
+            right: 40px;
+        }
+
+        .float-btn {
+            position: absolute;
+            bottom: -25px;
+            right: -25px;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .float-btn a {
+            position: relative;
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #0C9;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 2px 3px #333;
+        }
+
+        .float-btn i {
+            position: absolute;
+            font-size: 22px;
+            left: 50%;
+            top: 50%;
+            margin-top: -11px;
+            margin-left: -11px;
+        }
+
+        .relif {
+            z-index: 1;
+        }
+
+        #theme {
+            z-index: 2;
+        }
     </style>
 </head>
+
 <body>
-<div id="container">
-    <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">胡飞飞的个人网站</h1>
-    <ul class="clearfix">
-        <li>
-            <a id="blog" href="https://blog.hufeifei.cn" title="千里始足下 高山起微尘">
-                <i class="iconfont ic-blog"></i><span>Blog</span>
-            </a>
-        </li>
-        <li>
-            <a id="csdn" href="http://blog.csdn.net/holmofy" title="但行好事 莫问前程">
-                <i class="iconfont ic-csdn"></i><span>CSDN</span>
-            </a>
-        </li>
-        <li>
-            <a id="github" href="https://github.com/holmofy" title="乘风破浪会有事 直挂云帆济沧海">
-                <i class="iconfont ic-github"></i><span>Github</span>
-            </a>
-        </li>
-        <li>
-            <a id="wechat" href="https://www.hufeifei.cn/wechat.html" title="人生到处知何似 应似飞鸿踏雪泥">
-                <i class="iconfont ic-wechat"></i><span>Wechat</span>
-            </a>
-        </li>
-    </ul>
-    <span id="next-img"></span>
-</div>
-<div id="footer">
-    <a href="https://beian.miit.gov.cn/"> 赣ICP备17009276号 </a>
-    <span id="copyright">&copy; 2016 - 2018 </span>
-    <a href="http://www.hufeifei.cn/resume.html" title="点我查看简历"> power by 胡飞飞 </a>
-</div>
-<script>
-    (function () {
-        document.getElementById("copyright").innerHTML = "&copy; 2016 - " + new Date().getFullYear();
-        var hash = [
-            822,
-            117,
-            116,
-            115,
-            37,
-            5,
-            62,
-            54,
-            826,
-            825,
-            824,
-            823,
-            51,
-            48,
-            45,
-            43,
-            26,
-            121,
-            25,
-            49,
-            123,
-            122,
-            120,
-            118,
-            42,
-            31,
-            16,
-            38,
-            28,
-            6,
-            23,
-            17,
-            11,
-            10,
-            4,
-            70,
-            177,
-            175,
-            174,
-            172,
-            171,
-            170,
-            168,
-            167,
-            166,
-            165,
-            164,
-            163,
-            67,
-            13,
-            57,
-            69,
-            186,
-            185,
-            184,
-            182,
-            181,
-            180,
-            179,
-            178,
-            12,
-            53,
-            41,
-            14,
-            2,
-            21,
-            44,
-            27,
-            169,
-            8,
-            150,
-            183,
-            46,
-            20,
-            9,
-            55,
-            59,
-            18,
-            58,
-            24,
-            64,
-            52,
-            22,
-            112
-        ];
+    <div id="container" class="relif">
+        <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">胡飞飞的个人网站</h1>
+        <ul id="links" class="clearfix">
+            <li>
+                <a id="blog" href="https://blog.hufeifei.cn" title="千里始足下 高山起微尘">
+                    <i class="iconfont ic-blog"></i><span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a id="csdn" href="http://blog.csdn.net/holmofy" title="但行好事 莫问前程">
+                    <i class="iconfont ic-csdn"></i><span>CSDN</span>
+                </a>
+            </li>
+            <li>
+                <a id="github" href="https://github.com/holmofy" title="乘风破浪会有事 直挂云帆济沧海">
+                    <i class="iconfont ic-github"></i><span>Github</span>
+                </a>
+            </li>
+            <li>
+                <a id="wechat" href="https://www.hufeifei.cn/wechat.html" title="人生到处知何似 应似飞鸿踏雪泥">
+                    <i class="iconfont ic-wechat"></i><span>Wechat</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="float-btns" class="relif">
+        <div id="matrix" class="float-btn">
+            <a href="#"><i class="iconfont ic-matrix"></i></a>
+        </div>
+        <div id="gallery" class="float-btn">
+            <a href="#"><i class="iconfont ic-gallery"></i></a>
+        </div>
+        <div id="theme" class="float-btn">
+            <a href="#"><i class="iconfont ic-theme"></i></a>
+        </div>
+    </div>
+    <div id="footer">
+        <a href="https://beian.miit.gov.cn/"> 赣ICP备17009276号 </a>
+        <span id="copyright">&copy; 2016 - 2018 </span>
+        <a href="http://www.hufeifei.cn/resume.html" title="点我查看简历"> power by 胡飞飞 </a>
+    </div>
+    <script>
+        /**
+         * options: {
+         *     chars: ""// 展示的字符，默认正则w
+         *     fullScreen: boolean, // 是否全屏
+         *     fontSize: number, // 字符大小
+         *     fontColor: '#0F0' // 字符颜色
+         * }
+         **/
+        window.Matrix = (function (options = {}) {
+            var c = document.createElement('canvas');
+            c.style.transition = 'All 1.2s ease';
+            document.body.appendChild(c);
+            var ctx = c.getContext("2d");
 
-        function randomInt(x) {
-            return Math.floor(Math.random() * x);
-        }
+            if (options.fullScreen) {
+                c.height = window.innerHeight;
+                c.width = window.innerWidth;
+            }
 
-        function next() {
-            return "url(https://dss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/" + hash[randomInt(hash.length)] + ".jpg)";
-        }
+            var chars = options.chars || "_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+            chars = chars.split("");
 
-        var oImg = document.getElementById("next-img");
-        oImg.style.backgroundImage = next();
+            var font_size = options.fontSize || 10;
+            var columns = c.width / font_size; // 字符雨列数
+            var drops = []; // 每一列下落的位置(在y轴方向)
+            for (var x = 0; x < columns; x++)
+                drops[x] = 1;
 
-        function change() {
-            document.body.style.backgroundImage = oImg.style.backgroundImage;
-            oImg.style.backgroundImage = next();
-        }
+            window.addEventListener("resize", function (event) {
+                c.height = window.innerHeight;
+                c.width = window.innerWidth;
+                columns = c.width / font_size;
+                for (var x = 0; x < columns; x++)
+                    drops[x] = 1;
+            })
+            function getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
 
-        function loop() {
-            return setInterval(change, 8000);
-        }
+            function draw() {
+                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillRect(0, 0, c.width, c.height);
 
-        var t = loop();
-        document.getElementById("title").onclick = function () {
-            if (t) clearInterval(t);
-            change();
-            t = loop();
-        };
-    })();
-</script>
+                ctx.fillStyle = options.fontColor || "#0F0"; // 默认绿色
+                var computeFontSize = options.randomFontSize ? getRandomArbitrary(font_size * 0.7, font_size * 1.4) : font_size;
+                ctx.font = computeFontSize + "px arial";
+                //looping over drops
+                for (var i = 0; i < drops.length; i++) {
+                    var text = chars[Math.floor(Math.random() * chars.length)]; // 随机字符
+                    //x = i*font_size, y = value of drops[i]*font_size
+                    ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                    // 越界随机重新下落
+                    if (drops[i] * font_size > c.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+
+                    drops[i]++;  // 下落(y轴加一)
+                }
+            }
+
+            var timer;
+            function toggle() {
+                timer = timer ? clearInterval(timer) : setInterval(draw, 33);
+            }
+
+            function show() {
+                c.style.opacity = '1';
+                if (timer === undefined) {
+                    timer = setInterval(draw, 33);
+                }
+            }
+
+            function hide() {
+                c.style.opacity = '0';
+                if (timer) {
+                    timer = clearInterval(timer);
+                }
+            }
+
+            return { toggle, options, canvas: c, timer, show, hide, stop };
+        });
+
+        window.Gallery = (function () {
+            var picIds = [
+                822, 117, 116, 115, 37, 5, 62, 54, 826, 825,
+                824, 823, 51, 48, 45, 43, 26, 121, 25, 49,
+                123, 122, 120, 118, 42, 31, 16, 38, 28, 6,
+                23, 17, 11, 10, 4, 70, 177, 175, 174, 172,
+                171, 170, 168, 167, 166, 165, 164, 163, 67, 13,
+                57, 69, 186, 185, 184, 182, 181, 180, 179,
+                178, 12, 53, 41, 14, 2, 21, 44, 27, 169,
+                8, 150, 183, 46, 20, 9, 55, 59, 18, 58,
+                24, 64, 52, 22, 112
+            ];
+
+            function randomInt(x) {
+                return Math.floor(Math.random() * x);
+            }
+
+            function geneImgUrl() { // 百度首页背景图片，自带CDN
+                return "url(https://dss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/" + picIds[randomInt(picIds.length)] + ".jpg)";
+            }
+
+            // 让浏览器进行预加载,优化图片切换
+            var nextImg = document.createElement('span');
+            document.body.append(nextImg);
+            nextImg.style.width = 0;
+            nextImg.style.height = 0;
+            nextImg.style.opacity = 0;
+            nextImg.style.backgroundImage = geneImgUrl();
+
+            function change() {
+                document.body.style.backgroundImage = nextImg.style.backgroundImage;
+                nextImg.style.backgroundImage = geneImgUrl();
+            }
+
+            var timer;
+            function toggle() {
+                timer = timer ? clearInterval(timer) : setInterval(change, 5000);
+            }
+            function stop() {
+                if (timer) {
+                    timer = clearInterval(timer);
+                }
+            }
+            return { toggle, timer, change, stop };
+        });
+
+        (function () {
+            document.getElementById("copyright").innerHTML = "&copy; 2016 - " + new Date().getFullYear();
+
+            window.$matrix = Matrix({ fullScreen: true, randomFontSize: true });
+            window.$gallery = Gallery();
+
+            $matrix.show();
+            var theme = 'matrix';
+            var links = document.getElementById('links');
+            links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
+
+            document.getElementById("matrix").onclick = function () {
+                theme = 'matrix';
+                $matrix.show();
+                $gallery.stop();
+                links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
+            };
+            document.getElementById("gallery").onclick = function () {
+                theme = 'gallery';
+                $matrix.hide();
+                $gallery.change();
+                $gallery.toggle();
+                links.style.backgroundColor = 'rgba(6, 6, 6, 0.3)'
+            };
+            document.getElementById("title").onclick = function () {
+                if (theme === 'matrix') {
+                    $matrix.toggle();
+                }
+                if (theme === 'gallery') {
+                    $gallery.change();
+                }
+            }
+            var themeToggle = false;
+            document.getElementById("theme").onclick = function (event) {
+                var curr = event.currentTarget;
+                var sibling = curr.parentElement.children;
+                if (themeToggle) {
+                    for (var i = 0; i < sibling.length; ++i) {
+                        sibling[i].style.bottom = '-25px';
+                    }
+                    curr.querySelector('.iconfont').classList.replace('ic-close', 'ic-theme');
+                } else {
+                    for (var i = 0; i < sibling.length; ++i) {
+                        sibling[i].style.bottom = (95 - 60 * i) + 'px';
+                    }
+                    curr.querySelector('.iconfont').classList.replace('ic-theme', 'ic-close');
+                }
+                themeToggle = !themeToggle;
+            }
+        })();
+    </script>
 </body>
 
 </html>
