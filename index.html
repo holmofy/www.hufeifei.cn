@@ -485,12 +485,13 @@
 
             var theme = localStorage.getItem("theme") || 'gallery';
 
+            var links = document.getElementById('links');
             if (theme == 'matrix') {
                 $matrix.show();
-                var links = document.getElementById('links');
                 links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
             } else {
-                $gallery.toggle();
+                $gallery.toggle()
+                links.style.backgroundColor = 'rgba(6, 6, 6, 0.3)';
                 document.body.style.backgroundImage = "url('image/77.jpg')";
             }
 
