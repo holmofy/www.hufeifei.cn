@@ -43,7 +43,10 @@
             margin-right: .3em;
         }
 
-        dd p li ol {
+        dd,
+        p,
+        li,
+        ol {
             margin: 0;
         }
 
@@ -71,10 +74,6 @@
 
         section>h3+* {
             margin-left: 2em;
-        }
-
-        article p {
-            text-indent: 2em;
         }
 
         #name {
@@ -230,13 +229,14 @@
             width: 20%;
         }
 
-        #projects article>div {
-            margin: .8em 0;
-        }
-
         #projects article {
             display: list-item;
             list-style: decimal;
+            line-height: 2em;
+        }
+
+        #projects article p {
+            text-indent: 2em;
         }
 
         #professional>span {
