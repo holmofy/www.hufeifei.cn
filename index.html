@@ -290,7 +290,7 @@
             margin-left: -11px;
         }
 
-        .relif {
+        .zindex {
             z-index: 1;
         }
 
@@ -301,7 +301,7 @@
 </head>
 
 <body>
-    <div id="container" class="relif">
+    <div id="container" class="zindex">
         <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">胡飞飞的个人网站</h1>
         <ul id="links" class="clearfix">
             <li>
@@ -331,7 +331,7 @@
             </li>
         </ul>
     </div>
-    <div id="float-btns" class="relif">
+    <div id="float-btns" class="zindex">
         <div id="matrix" class="float-btn">
             <a href="#"><i class="iconfont ic-matrix"></i></a>
         </div>
@@ -483,19 +483,27 @@
             window.$matrix = Matrix({ fullScreen: true, randomFontSize: true });
             window.$gallery = Gallery();
 
-            $matrix.show();
-            var theme = 'matrix';
-            var links = document.getElementById('links');
-            links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
+            var theme = localStorage.getItem("theme") || 'gallery';
+
+            if (theme == 'matrix') {
+                $matrix.show();
+                var links = document.getElementById('links');
+                links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
+            } else {
+                $gallery.toggle();
+                document.body.style.backgroundImage = "url('image/77.jpg')";
+            }
 
             document.getElementById("matrix").onclick = function () {
                 theme = 'matrix';
+                localStorage.setItem("theme", theme);
                 $matrix.show();
                 $gallery.stop();
                 links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
             };
             document.getElementById("gallery").onclick = function () {
                 theme = 'gallery';
+                localStorage.setItem("theme", theme);
                 $matrix.hide();
                 $gallery.change();
                 $gallery.toggle();
