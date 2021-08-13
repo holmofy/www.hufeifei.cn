@@ -155,19 +155,17 @@
         }
 
         #container {
-            position: absolute;
-            left: 50vw;
-            top: 24vh;
-            width: 90vw;
-            margin-left: -45vw;
+            display: flex;
+            width: 100%;
+            height: 100%;
             animation: fadeIn;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -40px;
         }
 
         #avatar {
-            position: absolute;
-            left: 50%;
-            margin-left: -42px;
-            margin-top: -80px;
             width: 80px;
             height: 80px;
             border: 2px solid white;
@@ -176,7 +174,6 @@
         }
 
         #title {
-            text-align: center;
             font-size: 20px;
             font-weight: normal;
             text-shadow: 4px 2px 8px black;
@@ -184,23 +181,21 @@
         }
 
         #container ul {
-            width: 76%;
-            margin: 0 auto;
             padding: 18px;
             position: relative;
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         #container ul:before {
-            z-index: -1;
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             bottom: 0;
             right: 0;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.3);
             -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
             box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.3);
@@ -208,19 +203,20 @@
         }
 
         #container li {
-            width: 65px;
+            z-index: 1;
+            width: 60px;
+            height: 60px;
             padding: 10px;
-            text-align: center;
         }
 
         #container li:hover i {
-            -moz-transform: scale(1.4);
-            -webkit-transform: scale(1.4);
-            transform: scale(1.4);
+            -moz-transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
         }
 
         #container li i {
-            font-size: 30px;
+            font-size: 35px;
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             -o-transition: all 0.3s;
@@ -228,29 +224,30 @@
             transition: all 0.3s;
         }
 
-        #container a {
+        #container li a {
+            height: 100%;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
             -webkit-transition: color .25s ease-out .1s;
             -moz-transition: color .25s ease-out .1s;
             -o-transition: color .25s ease-out .1s;
             -ms-transition: color .25s ease-out .1s;
             transition: color .25s ease-out .1s;
             text-shadow: 2px 2px 4px #00000070
-            display: flex;
-            flex-direction: column;
         }
 
-        #container a:hover {
+        #container li a:hover {
             text-shadow: 4px 2px 8px #333;
+            text-decoration: none;
         }
 
         #footer {
-            width: 100%;
-            height: 16px;
-            line-height: 16px;
             font-size: 10px;
             position: absolute;
             bottom: 5px;
-            text-align: center;
         }
 
         #footer>* {
@@ -265,34 +262,34 @@
             opacity: .8;
         }
 
-        @media (min-width: 641px) and (max-width: 770px) {
+        @media (max-width: 900px) {
             #container ul {
-                width: 70%;
+                width: 300px;
             }
         }
 
-        @media (min-width: 771px) {
+        @media (max-width: 380px) {
             #container ul {
-                width: 40%;
+                width: 240px;
             }
         }
 
-        @media (min-width: 990px) {
+        @media (max-width: 300px) {
             #container ul {
-                width: 30%;
+                width: 200px;
             }
         }
 
         #float-btns {
-            position: fixed;
-            bottom: 60px;
-            right: 40px;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transition: none;
         }
 
         .float-btn {
             position: absolute;
-            bottom: -25px;
-            right: -25px;
+            transition: all .3s;
         }
 
         .float-btn a {
@@ -316,29 +313,17 @@
             margin-left: -11px;
         }
 
-        .zindex {
-            z-index: 1;
-        }
-
         #theme {
             z-index: 2;
-        }
-
-        * {
-            -webkit-transition: all 0.3s;
-            -moz-transition: all 0.3s;
-            -o-transition: all 0.3s;
-            -ms-transition: all 0.3s;
-            transition: all 0.3s;
         }
     </style>
 </head>
 
 <body>
-    <div id="container" class="zindex">
+    <div id="container">
         <img id="avatar" src="./favicon.jpg" />
-        <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">Stay hungry, stay foolish.</h1>
-        <ul id="links" class="clearfix">
+        <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">Holmofy</h1>
+        <ul id="links">
             <li>
                 <a id="blog" href="https://blog.hufeifei.cn" title="千里始足下 高山起微尘">
                     <i class="iconfont ic-blog"></i><span>Blog</span>
@@ -370,8 +355,13 @@
                 </a>
             </li>
         </ul>
+        <div id="footer">
+            <a href="https://beian.miit.gov.cn/"> 赣ICP备17009276号 </a>
+            <span id="copyright">&copy; 2016 - 2018 </span>
+            <a href="http://www.hufeifei.cn/resume.html" title="点我查看简历"> power by 胡飞飞 </a>
+        </div>
     </div>
-    <div id="float-btns" class="zindex">
+    <div id="float-btns" draggable>
         <div id="matrix" class="float-btn">
             <a href="#"><i class="iconfont ic-matrix"></i></a>
         </div>
@@ -379,13 +369,8 @@
             <a href="#"><i class="iconfont ic-gallery"></i></a>
         </div>
         <div id="theme" class="float-btn">
-            <a href="#"><i class="iconfont ic-theme"></i></a>
+            <a href="javascript:void()"><i class="iconfont ic-theme"></i></a>
         </div>
-    </div>
-    <div id="footer" class="zindex">
-        <a href="https://beian.miit.gov.cn/"> 赣ICP备17009276号 </a>
-        <span id="copyright">&copy; 2016 - 2018 </span>
-        <a href="http://www.hufeifei.cn/resume.html" title="点我查看简历"> power by 胡飞飞 </a>
     </div>
     <script>
         /**
@@ -399,6 +384,9 @@
         window.Matrix = (function (options = {}) {
             var c = document.createElement('canvas');
             c.style.transition = 'All 1.2s ease';
+            c.style.zIndex = -1;
+            c.style.position = 'absolute';
+            c.style.top = 0;
             document.body.appendChild(c);
             var ctx = c.getContext("2d");
 
@@ -423,6 +411,7 @@
                 for (var x = 0; x < columns; x++)
                     drops[x] = 1;
             })
+
             function getRandomArbitrary(min, max) {
                 return Math.random() * (max - min) + min;
             }
@@ -432,7 +421,8 @@
                 ctx.fillRect(0, 0, c.width, c.height);
 
                 ctx.fillStyle = options.fontColor || "#0F0"; // 默认绿色
-                var computeFontSize = options.randomFontSize ? getRandomArbitrary(font_size * 0.7, font_size * 1.4) : font_size;
+                var computeFontSize = options.randomFontSize ? getRandomArbitrary(font_size * 0.7, font_size *
+                    1.4) : font_size;
                 ctx.font = computeFontSize + "px arial";
                 //looping over drops
                 for (var i = 0; i < drops.length; i++) {
@@ -445,11 +435,12 @@
                         drops[i] = 0;
                     }
 
-                    drops[i]++;  // 下落(y轴加一)
+                    drops[i]++; // 下落(y轴加一)
                 }
             }
 
             var timer;
+
             function toggle() {
                 timer = timer ? clearInterval(timer) : setInterval(draw, 33);
             }
@@ -468,21 +459,26 @@
                 }
             }
 
-            return { toggle, options, canvas: c, timer, show, hide, stop };
+            return {
+                toggle,
+                options,
+                canvas: c,
+                timer,
+                show,
+                hide,
+                stop
+            };
         });
 
         window.Gallery = (function () {
             var picIds = [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
-                , 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
-                , 26, 27, 28, 29, 30, 31, 32, 33, 35, 37, 38, 41, 42, 43, 44
-                , 45, 46, 48, 49, 51, 52, 53, 54, 55, 56, 57
-                , 58, 59, 61, 62, 64, 65, 67, 68, 69, 70, 72, 73, 74, 112, 113, 115, 116
-                , 117, 118, 119, 120, 121, 122, 123, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135
-                , 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 163, 164, 165
-                , 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177
-                , 178, 179, 180, 181, 182, 183, 184, 185, 186, 822
-                , 823, 824, 825, 826
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+                26, 27, 28, 29, 30, 31, 32, 33, 35, 37, 38, 41, 42, 43, 44, 45, 46, 48, 49, 51, 52, 53, 54,
+                55, 56, 57, 58, 59, 61, 62, 64, 65, 67, 68, 69, 70, 72, 73, 74, 112, 113, 115, 116, 117,
+                118, 119, 120, 121, 122, 123, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136,
+                137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 163, 164, 165, 166,
+                167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184,
+                185, 186, 822, 823, 824, 825, 826
             ];
 
             function randomInt(x) {
@@ -490,7 +486,8 @@
             }
 
             function geneImgUrl() { // 百度首页背景图片，自带CDN
-                return "url(https://dss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/" + picIds[randomInt(picIds.length)] + ".jpg)";
+                return "url(https://dss3.bdstatic.com/iPoZeXSm1A5BphGlnYG/skin/" + picIds[randomInt(picIds
+                    .length)] + ".jpg)";
             }
 
             // 让浏览器进行预加载,优化图片切换
@@ -507,21 +504,145 @@
             }
 
             var timer;
+
             function toggle() {
                 timer = timer ? clearInterval(timer) : setInterval(change, 5000);
             }
+
             function stop() {
                 if (timer) {
                     timer = clearInterval(timer);
                 }
             }
-            return { toggle, timer, change, stop };
+            return {
+                toggle,
+                timer,
+                change,
+                stop
+            };
         });
+
+        window.Draggable = (function (element) {
+            document.addEventListener("dragover", function (event) {
+                event.preventDefault();
+            }, false);
+
+            function getWidth() {
+                return Number(getComputedStyle(element).width.replace('px', ''));
+            }
+
+            function getHeight() {
+                return Number(getComputedStyle(element).height.replace('px', ''));
+            }
+
+            function getTouchHandler(callback) {
+                return function (e) {
+                    if (e.path.includes(element)) {
+                        callback(e.changedTouches[0]);
+                    }
+                }
+            }
+
+            function getDragHandler(callback) {
+                return function (e) {
+                    if (e.path.includes(element)) {
+                        callback(e);
+                    }
+                }
+            }
+
+            function onDrag(callback) {
+                if ('function' !== typeof callback) return;
+                element.addEventListener('drag', getDragHandler(callback));
+                document.addEventListener('touchmove', getTouchHandler(callback));
+            }
+
+            function onDragStart(callback) {
+                if ('function' !== typeof callback) return;
+                element.addEventListener('dragstart', getDragHandler(callback));
+                document.addEventListener('touchstart', getTouchHandler(callback));
+            }
+
+            function onDragEnd(callback) {
+                if ('function' !== typeof callback) return;
+                element.addEventListener('dragend', getDragHandler(callback));
+                document.addEventListener('touchend', getTouchHandler(callback));
+            }
+
+            onDrag(function (e) {
+                var width = getWidth();
+                var height = getHeight();
+                element.style.left = (e.clientX - width / 2) + 'px';
+                element.style.top = (e.clientY - height / 2) + 'px';
+            });
+            return {
+                onDragStart,
+                onDragEnd,
+                getWidth,
+                getHeight,
+                element
+            };
+        });
+
+        window.StickyDraggable = function (element, stickyOptions) {
+            var draggable = Draggable(element);
+            var options = Object.assign({
+                x: true,
+                y: true,
+                paddingX: 40,
+                paddingY: 40
+            }, stickyOptions);
+
+            function stick(x, y) {
+                if (options.x) {
+                    stickX(x);
+                } else {
+                    var width = draggable.getWidth();
+                    element.style.left = (x - width / 2) + 'px';
+                }
+                if (options.y) {
+                    stickY(e);
+                } else {
+                    var height = draggable.getHeight();
+                    element.style.top = (y - height / 2) + 'px';
+                }
+            }
+
+            function stickX(x) {
+                var width = draggable.getWidth();
+                if (x < window.innerWidth / 2) {
+                    element.style.left = (options.paddingX - width / 2) + 'px';
+                } else {
+                    element.style.left = (window.innerWidth - width / 2 - options.paddingX) + 'px';
+                }
+            }
+
+            function stickY(y) {
+                var height = draggable.getHeight();
+                if (y < window.innerHeight / 2) {
+                    element.style.top = (options.paddingY - height / 2) + 'px';
+                } else {
+                    element.style.top = (window.innerHeight - height / 2 - options.paddingY) + 'px';
+                }
+            }
+
+            draggable.onDragEnd(function (e) {
+                stick(e.clientX, e.clientY);
+            });
+            return Object.assign(draggable, {
+                stick,
+                stickX,
+                stickY
+            });
+        };
 
         (function () {
             document.getElementById("copyright").innerHTML = "&copy; 2016 - " + new Date().getFullYear();
 
-            window.$matrix = Matrix({ fullScreen: true, randomFontSize: true });
+            window.$matrix = Matrix({
+                fullScreen: true,
+                randomFontSize: true
+            });
             window.$gallery = Gallery();
 
             var theme = localStorage.getItem("theme") || 'gallery';
@@ -561,18 +682,86 @@
                 var sibling = curr.parentElement.children;
                 if (themeToggle) {
                     for (var i = 0; i < sibling.length; ++i) {
-                        sibling[i].style.bottom = '-25px';
+                        sibling[i].style.bottom = '';
                     }
                     curr.querySelector('.iconfont').classList.replace('ic-close', 'ic-theme');
                 } else {
                     for (var i = 0; i < sibling.length; ++i) {
-                        sibling[i].style.bottom = (95 - 60 * i) + 'px';
+                        sibling[i].style.bottom = (120 - 60 * i) + 'px';
                     }
                     curr.querySelector('.iconfont').classList.replace('ic-theme', 'ic-close');
                 }
                 themeToggle = !themeToggle;
             }
-            console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ', 'background: #33CED6; color: #FA827F; font-size:20px;');
+            console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
+                'background: #33CED6; color: #FA827F; font-size:20px;');
+
+            var floatBtn = document.getElementById("float-btns");
+            var stickyDraggable = StickyDraggable(floatBtn, {
+                x: true,
+                y: false,
+                paddingX: 40
+            });
+            var xPercent = localStorage.getItem('floatBtn.xPercent');
+            var yPercent = localStorage.getItem('floatBtn.yPercent');
+            stickyDraggable.onDragEnd(function (e) {
+                var left = Number(getComputedStyle(floatBtn).left.replace('px', ''));
+                var top = Number(getComputedStyle(floatBtn).top.replace('px', ''));
+                xPercent = left / window.innerWidth;
+                yPercent = top / window.innerHeight;
+                localStorage.setItem('floatBtn.xPercent', xPercent);
+                localStorage.setItem('floatBtn.yPercent', yPercent);
+            })
+
+            var width = stickyDraggable.getWidth();
+            var height = stickyDraggable.getWidth();
+            if (!xPercent && !yPercent) {
+                floatBtn.style.left = (window.innerWidth - width / 2 - 40) + 'px';
+                floatBtn.style.top = (window.innerHeight - height / 2 - 60) + 'px';
+            } else {
+                var x = window.innerWidth * Number(xPercent) + width / 2;
+                var y = window.innerHeight * Number(yPercent) + height / 2;
+                stickyDraggable.stick(x, y);
+            }
+            window.addEventListener("resize", function () {
+                var x = window.innerWidth * Number(xPercent) + width / 2;
+                var y = window.innerHeight * Number(yPercent) + height / 2;
+                stickyDraggable.stick(x, y);
+            })
+
+            if (window.innerWidth < 900) {
+                var avatar = document.getElementById('avatar');
+                var title = document.getElementById('title');
+                var links = document.getElementById('links');
+                avatar.style.transition = 'transform .3s';
+                title.style.transition = 'transform .3s';
+                links.style.transition = 'transform .3s';
+
+                function showElement(e) {
+                    e.style.transform = 'scale(1)';
+                    e.style.opacity = 1;
+                    e.style.height = '';
+                }
+
+                function hiddenElement(e) {
+                    e.style.transform = 'scale(0)';
+                    e.style.opacity = 0;
+                    e.style.height = 0;
+                }
+                hiddenElement(links);
+                avatar.onclick = function () {
+                    showElement(links);
+                    hiddenElement(avatar);
+                    hiddenElement(title);
+                };
+                document.body.onclick = function (e) {
+                    if (e.target != avatar && e.target != links) {
+                        hiddenElement(links);
+                        showElement(avatar);
+                        showElement(title);
+                    }
+                };
+            }
         })();
     </script>
 </body>
