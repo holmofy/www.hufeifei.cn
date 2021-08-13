@@ -28,14 +28,6 @@
             list-style: none;
         }
 
-        /* ulitity */
-        .clearfix:after {
-            content: "";
-            visibility: hidden;
-            display: block;
-            clear: both;
-        }
-
         .ic-weibo:before {
             color: rgb(250, 0, 0);
         }
@@ -196,6 +188,8 @@
             margin: 0 auto;
             padding: 18px;
             position: relative;
+            display: flex;
+            flex-wrap: wrap;
         }
 
         #container ul:before {
@@ -214,9 +208,7 @@
         }
 
         #container li {
-            width: 100px;
-            height: 32px;
-            margin: 0 auto;
+            width: 65px;
             text-align: center;
         }
 
@@ -242,6 +234,8 @@
             -ms-transition: color .25s ease-out .1s;
             transition: color .25s ease-out .1s;
             text-shadow: 2px 2px 4px #00000070
+            display: flex;
+            flex-direction: column;
         }
 
         #container a:hover {
