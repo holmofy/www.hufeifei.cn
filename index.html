@@ -195,7 +195,21 @@
             width: 76%;
             margin: 0 auto;
             padding: 18px;
-            background: rgba(6, 6, 6, 0.3);
+            position: relative;
+        }
+
+        #container ul:before {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(255,255,255,0.2);
+            webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            box-shadow: 3px 3px 6px 3px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
         }
 
@@ -227,6 +241,7 @@
             -o-transition: color .25s ease-out .1s;
             -ms-transition: color .25s ease-out .1s;
             transition: color .25s ease-out .1s;
+            text-shadow: 2px 2px 4px #00000070
         }
 
         #container a:hover {
@@ -519,10 +534,8 @@
             var links = document.getElementById('links');
             if (theme == 'matrix') {
                 $matrix.show();
-                links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
             } else {
                 $gallery.toggle()
-                links.style.backgroundColor = 'rgba(6, 6, 6, 0.3)';
                 document.body.style.backgroundImage = "url('image/77.jpg')";
             }
 
@@ -531,7 +544,6 @@
                 localStorage.setItem("theme", theme);
                 $matrix.show();
                 $gallery.stop();
-                links.style.backgroundColor = 'rgba(222, 222, 222, 0.3)';
             };
             document.getElementById("gallery").onclick = function () {
                 theme = 'gallery';
@@ -539,7 +551,6 @@
                 $matrix.hide();
                 $gallery.change();
                 $gallery.toggle();
-                links.style.backgroundColor = 'rgba(6, 6, 6, 0.3)'
             };
             document.getElementById("title").onclick = function () {
                 if (theme === 'matrix') {
