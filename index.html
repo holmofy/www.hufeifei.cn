@@ -457,6 +457,8 @@
             }
 
             function show() {
+                document.head.getElementsByTagName('meta')
+                    .namedItem('theme-color').content = 'black';
                 c.style.opacity = '1';
                 if (timer === undefined) {
                     timer = setInterval(draw, 33);
@@ -510,6 +512,8 @@
             nextImg.style.backgroundImage = geneImgUrl();
 
             function change() {
+                document.head.getElementsByTagName('meta')
+                    .namedItem('theme-color').content = '#c5e2ef30';
                 document.body.style.backgroundImage = nextImg.style.backgroundImage;
                 nextImg.style.backgroundImage = geneImgUrl();
             }
