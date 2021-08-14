@@ -22,6 +22,7 @@
         li {
             margin: 0;
             padding: 0;
+            user-select: none;
         }
 
         li {
@@ -369,19 +370,21 @@
             <a href="#"><i class="iconfont ic-gallery"></i></a>
         </div>
         <div id="theme" class="float-btn">
-            <a href="javascript:void()"><i class="iconfont ic-theme"></i></a>
+            <a href="javascript:void(0)"><i class="iconfont ic-theme"></i></a>
         </div>
     </div>
     <script>
-        /**
-         * options: {
-         *     chars: ""// 展示的字符，默认正则w
-         *     fullScreen: boolean, // 是否全屏
-         *     fontSize: number, // 字符大小
-         *     fontColor: '#0F0' // 字符颜色
-         * }
-         **/
-        window.Matrix = (function (options = {}) {
+        window.Matrix = (function (options) {
+            options = Object.assign({
+                chars: "_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+                fullScreen: true,
+                backgroundColor: "rgba(0, 0, 0, 0.05)",
+                fontSize: 10,
+                fontColor: "#0F0",
+                randomFontSize: true,
+                randomMin: 0.7,
+                randomMax: 1.4
+            }, options);
             var c = document.createElement('canvas');
             c.style.transition = 'All 1.2s ease';
             c.style.zIndex = -1;
@@ -395,11 +398,10 @@
                 c.width = window.innerWidth;
             }
 
-            var chars = options.chars || "_0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-            chars = chars.split("");
+            var chars = options.chars.split("");
 
-            var font_size = options.fontSize || 10;
-            var columns = c.width / font_size; // 字符雨列数
+            var fontSize = options.fontSize;
+            var columns = c.width / fontSize; // 字符雨列数
             var drops = []; // 每一列下落的位置(在y轴方向)
             for (var x = 0; x < columns; x++)
                 drops[x] = 1;
@@ -407,7 +409,7 @@
             window.addEventListener("resize", function (event) {
                 c.height = window.innerHeight;
                 c.width = window.innerWidth;
-                columns = c.width / font_size;
+                columns = c.width / fontSize;
                 for (var x = 0; x < columns; x++)
                     drops[x] = 1;
             })
@@ -417,21 +419,21 @@
             }
 
             function draw() {
-                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+                ctx.fillStyle = options.backgroundColor;
                 ctx.fillRect(0, 0, c.width, c.height);
 
-                ctx.fillStyle = options.fontColor || "#0F0"; // 默认绿色
-                var computeFontSize = options.randomFontSize ? getRandomArbitrary(font_size * 0.7, font_size *
-                    1.4) : font_size;
+                ctx.fillStyle = options.fontColor;
+                var computeFontSize = options.randomFontSize ?
+                    getRandomArbitrary(fontSize * options.randomMin, fontSize * options.randomMax) : fontSize;
                 ctx.font = computeFontSize + "px arial";
                 //looping over drops
                 for (var i = 0; i < drops.length; i++) {
                     var text = chars[Math.floor(Math.random() * chars.length)]; // 随机字符
                     //x = i*font_size, y = value of drops[i]*font_size
-                    ctx.fillText(text, i * font_size, drops[i] * font_size);
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
                     // 越界随机重新下落
-                    if (drops[i] * font_size > c.height && Math.random() > 0.975) {
+                    if (drops[i] * fontSize > c.height && Math.random() > 0.975) {
                         drops[i] = 0;
                     }
 
@@ -522,10 +524,20 @@
             };
         });
 
-        window.Draggable = (function (element) {
+        window.Draggable = (function (element, target) {
+            element.style.position = 'absolute';
+            target = target || element;
+            var supportTouch = 'ontouchend' in document;
+            var supportDrag = 'ondragend' in document;
             document.addEventListener("dragover", function (event) {
                 event.preventDefault();
             }, false);
+            // 禁止页面滚动
+            document.body.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+            }, {
+                passive: false
+            });
 
             function getWidth() {
                 return Number(getComputedStyle(element).width.replace('px', ''));
@@ -537,15 +549,16 @@
 
             function getTouchHandler(callback) {
                 return function (e) {
-                    if (e.path.includes(element)) {
-                        callback(e.changedTouches[0]);
+                    if (e.path.includes(target)) {
+                        e = e.originalEvent || e; // ios 兼容
+                        callback(e.touches[0] || e.changedTouches[0]);
                     }
                 }
             }
 
             function getDragHandler(callback) {
                 return function (e) {
-                    if (e.path.includes(element)) {
+                    if (e.path.includes(target)) {
                         callback(e);
                     }
                 }
@@ -553,20 +566,20 @@
 
             function onDrag(callback) {
                 if ('function' !== typeof callback) return;
-                element.addEventListener('drag', getDragHandler(callback));
-                document.addEventListener('touchmove', getTouchHandler(callback));
+                supportDrag && element.addEventListener('drag', getDragHandler(callback));
+                supportTouch && element.addEventListener('touchmove', getTouchHandler(callback));
             }
 
             function onDragStart(callback) {
                 if ('function' !== typeof callback) return;
-                element.addEventListener('dragstart', getDragHandler(callback));
-                document.addEventListener('touchstart', getTouchHandler(callback));
+                supportDrag && element.addEventListener('dragstart', getDragHandler(callback));
+                supportTouch && element.addEventListener('touchstart', getTouchHandler(callback));
             }
 
             function onDragEnd(callback) {
                 if ('function' !== typeof callback) return;
-                element.addEventListener('dragend', getDragHandler(callback));
-                document.addEventListener('touchend', getTouchHandler(callback));
+                supportDrag && element.addEventListener('dragend', getDragHandler(callback));
+                supportTouch && element.addEventListener('touchend', getTouchHandler(callback));
             }
 
             onDrag(function (e) {
@@ -576,6 +589,7 @@
                 element.style.top = (e.clientY - height / 2) + 'px';
             });
             return {
+                onDrag,
                 onDragStart,
                 onDragEnd,
                 getWidth,
@@ -584,8 +598,8 @@
             };
         });
 
-        window.StickyDraggable = function (element, stickyOptions) {
-            var draggable = Draggable(element);
+        window.StickyDraggable = function (element, target, stickyOptions) {
+            var draggable = Draggable(element, target);
             var options = Object.assign({
                 x: true,
                 y: true,
@@ -601,7 +615,7 @@
                     element.style.left = (x - width / 2) + 'px';
                 }
                 if (options.y) {
-                    stickY(e);
+                    stickY(y);
                 } else {
                     var height = draggable.getHeight();
                     element.style.top = (y - height / 2) + 'px';
@@ -638,16 +652,14 @@
 
         (function () {
             document.getElementById("copyright").innerHTML = "&copy; 2016 - " + new Date().getFullYear();
+            console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
+                'background: #33CED6; color: #FA827F; font-size:20px;');
 
-            window.$matrix = Matrix({
-                fullScreen: true,
-                randomFontSize: true
-            });
+            // 矩阵主题和图片画廊主题切换效果
+            window.$matrix = Matrix();
             window.$gallery = Gallery();
 
             var theme = localStorage.getItem("theme") || 'gallery';
-
-            var links = document.getElementById('links');
             if (theme == 'matrix') {
                 $matrix.show();
             } else {
@@ -693,14 +705,13 @@
                 }
                 themeToggle = !themeToggle;
             }
-            console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
-                'background: #33CED6; color: #FA827F; font-size:20px;');
 
+            // 浮动按钮拖动效果
+            var themeElement = document.getElementById("theme");
             var floatBtn = document.getElementById("float-btns");
-            var stickyDraggable = StickyDraggable(floatBtn, {
+            var stickyDraggable = StickyDraggable(floatBtn, themeElement, {
                 x: true,
-                y: false,
-                paddingX: 40
+                y: false
             });
             var xPercent = localStorage.getItem('floatBtn.xPercent');
             var yPercent = localStorage.getItem('floatBtn.yPercent');
@@ -728,7 +739,10 @@
                 var y = window.innerHeight * Number(yPercent) + height / 2;
                 stickyDraggable.stick(x, y);
             })
+        })();
 
+        (function () {
+            // 文件夹效果
             if (window.innerWidth < 900) {
                 var avatar = document.getElementById('avatar');
                 var title = document.getElementById('title');
