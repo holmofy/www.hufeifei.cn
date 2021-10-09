@@ -709,12 +709,12 @@
             var sibling = curr.parentElement.children;
             if (themeToggle) {
                 for (var i = 0; i < sibling.length; ++i) {
-                    sibling[i].style.transform = 'transform: translateY(-' + i * 60 + 'px);';
+                    sibling[i].style.transform = '';
                 }
                 curr.querySelector('.iconfont').classList.replace('ic-close', 'ic-theme');
             } else {
                 for (var i = 0; i < sibling.length; ++i) {
-                    sibling[i].style.bottom = (120 - 60 * i) + 'px';
+                    sibling[i].style.transform = 'transform: translateY(-' + i * 60 + 'px);';
                 }
                 curr.querySelector('.iconfont').classList.replace('ic-theme', 'ic-close');
             }
