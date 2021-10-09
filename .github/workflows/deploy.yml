@@ -25,5 +25,6 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: Deploy by git
         run: |
+          git fetch --unshallow
           git remote add www git@www.hufeifei.cn:repo/www.hufeifei.cn.git
           git push www master -f
