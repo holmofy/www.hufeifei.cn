@@ -336,7 +336,7 @@
 <body>
     <div id="container">
         <img id="avatar" src="./favicon.jpg" />
-        <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海">Holmofy</h1>
+        <h1 id="title" title="不积跬步无以至千里,不积小流无以成江海"><span id="typed">Holmofy</span></h1>
         <ul id="links">
             <li>
                 <a id="blog" href="https://blog.hufeifei.cn" title="千里始足下 高山起微尘">
@@ -684,9 +684,10 @@
             console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
                 'background: #33CED6; color: #FA827F; font-size:20px;');
 
-            var typed = new Typed('#title', {
+            var typed = new Typed('#typed', {
                 strings: ["Holmofy", "日拱一卒，功不唐捐", "Stay foolish, stay hungry"],
-                typeSpeed: 30
+                typeSpeed: 30,
+                loop: true
             });
 
             // 矩阵主题和图片画廊主题切换效果
