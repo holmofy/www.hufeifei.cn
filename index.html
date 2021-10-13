@@ -17,6 +17,7 @@
         content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <script data-ad-client="ca-pub-7111912103882824" async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="icon" sizes="192x192" href="favicon.jpg">
     <link rel="apple-touch-icon" href="favicon.jpg">
     <title>Holmofy-胡飞飞的个人网站</title>
@@ -76,7 +77,7 @@
             color: #CC8C8C;
         }
 
-        .ic-favorites:before{
+        .ic-favorites:before {
             color: #CC8C8C;
         }
 
@@ -682,6 +683,11 @@
             document.getElementById("copyright").innerHTML = "&copy; 2016 - " + new Date().getFullYear();
             console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
                 'background: #33CED6; color: #FA827F; font-size:20px;');
+
+            var typed = new Typed('#title', {
+                strings: ["Holmofy", "日拱一卒，功不唐捐", "Stay foolish, stay hungry"],
+                typeSpeed: 30
+            });
 
             // 矩阵主题和图片画廊主题切换效果
             window.$matrix = Matrix();
