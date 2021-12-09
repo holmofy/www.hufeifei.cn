@@ -32,7 +32,7 @@
   <link rel="icon" sizes="192x192" href="favicon.jpg">
   <link rel="apple-touch-icon" href="favicon.jpg">
   <title>Holmofy-胡飞飞的个人网站</title>
-  <link href="//at.alicdn.com/t/font_841402_4jcu0xlw4b4.css" rel="stylesheet">
+  <link href="//at.alicdn.com/t/font_841402_dfo1zj714s8.css" rel="stylesheet">
   <style>
     /* css reset */
     body,
@@ -96,6 +96,10 @@
       color: #317be8;
     }
 
+    .ic-tools:before {
+      color: #E1E1E5;
+    }
+    
     /* animation */
     .shake {
       animation: shake 0.82s cubic-bezier(.36, .07, .19, .97);
@@ -227,6 +231,7 @@
     }
 
     #container ul {
+      width: 240px;
       padding: 18px;
       position: relative;
       display: flex;
@@ -299,24 +304,6 @@
       opacity: .8;
     }
 
-    @media (max-width: 900px) {
-      #container ul {
-        width: 300px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      #container ul {
-        width: 240px;
-      }
-    }
-
-    @media (max-width: 300px) {
-      #container ul {
-        width: 200px;
-      }
-    }
-
     #float-btns {
       width: 50px;
       height: 50px;
@@ -366,6 +353,11 @@
       <li>
         <a id="favorites" href="https://cs.hufeifei.cn" title="严于律己 宽于待人">
           <i class="iconfont ic-sheet"></i><span>CheatSheets</span>
+        </a>
+      </li>
+      <li>
+        <a id="tools" href="https://tools.hufeifei.cn" title="生如逆旅 一苇以航">
+          <i class="iconfont ic-tools"></i><span>Toolbox</span>
         </a>
       </li>
       <li>
