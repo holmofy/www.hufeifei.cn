@@ -22,4 +22,4 @@ jobs:
           ssh-add ~/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ github.event.repository.name }} >> ~/.ssh/known_hosts 
           ssh -i ~/.ssh/id_rsa root@${{ github.event.repository.name }} 'cd /certbot-nginx-docker; \
-          echo 'y' | sh init-certbot.sh'
+          echo "y" | sh init-certbot.sh'
