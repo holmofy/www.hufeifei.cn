@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  renew:
     runs-on: ubuntu-latest
     steps:
       - name: Install SSH key
@@ -18,5 +18,5 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: ssh renew
         run: |
-          ssh -i ~/.ssh/id_rsa root@report.hufeifei.cn 'cd /certbot-nginx-docker; \
+          ssh -i ~/.ssh/id_rsa root@www.hufeifei.cn 'cd /certbot-nginx-docker; \
           echo 'y' | sh init-certbot.sh'
