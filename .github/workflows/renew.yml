@@ -17,7 +17,7 @@ jobs:
           ssh-host: ${{ github.event.repository.name }}
       - name: ssh renew
         run: |
-          echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-add ~/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ github.event.repository.name }} >> ~/.ssh/known_hosts 
