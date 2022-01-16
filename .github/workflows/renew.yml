@@ -13,11 +13,11 @@ jobs:
       - name: Install ssh-key
         uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-private-key: ${{ secrets.ID_RSA }}
           ssh-host: ${{ github.event.repository.name }}
       - name: ssh renew
         run: |
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-add ~/.ssh/id_rsa
           ssh-keyscan -t rsa ${{ github.event.repository.name }} >> ~/.ssh/known_hosts 
