@@ -10,13 +10,16 @@ jobs:
   renew:
     runs-on: ubuntu-latest
     steps:
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Install ssh-key
+        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-host: ${{ github.event.repository.name }}
       - name: ssh renew
         run: |
-          ssh -i ~/.ssh/id_rsa root@www.hufeifei.cn 'cd /certbot-nginx-docker; \
+          echo "${{ secrets.ID_RSA }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-add ~/.ssh/id_rsa
+          ssh-keyscan -t rsa ${{ github.event.repository.name }} >> ~/.ssh/known_hosts 
+          ssh -i ~/.ssh/id_rsa root@${{ github.event.repository.name }} 'cd /certbot-nginx-docker; \
           echo 'y' | sh init-certbot.sh'
