@@ -1,9 +1,9 @@
 name: Renew Certbot
 
 on:
-  schedule:
+  #schedule:
       # 每两个月重新申请一次证书
-      - cron: "* * */2 * *"
+      #- cron: "* * */2 * *"
   workflow_dispatch:
 
 jobs:
