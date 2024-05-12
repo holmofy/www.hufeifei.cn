@@ -827,7 +827,9 @@
         typeSpeed: 50,
         startDelay: 2000,
         backSpeed: 30,
-        onComplete: unfold
+        onComplete: function() { 
+          setTimeout(unfold, 1000);
+        }
       });
     })();
   </script>
