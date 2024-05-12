@@ -691,13 +691,6 @@
       console.log('%c 我的简历：https://www.hufeifei.cn/resume.html ',
         'background: #33CED6; color: #FA827F; font-size:20px;');
 
-      var typed = new Typed('#typed', {
-        strings: ["", "终身学习，独立思考", "Stay foolish, stay hungry!", "Holmofy"],
-        typeSpeed: 50,
-        startDelay: 2000,
-        backSpeed: 30
-      });
-
       // 矩阵主题和图片画廊主题切换效果
       window.$matrix = Matrix();
       window.$gallery = Gallery();
@@ -786,48 +779,56 @@
 
     (function () {
       // 文件夹效果
-      if (window.innerWidth < 520) {
-        var avatar = document.getElementById('avatar');
-        var title = document.getElementById('title');
-        var links = document.getElementById('links');
-        avatar.style.transition = 'transform .3s';
-        title.style.transition = 'transform .3s';
-        links.style.transition = 'transform .3s';
+      var avatar = document.getElementById('avatar');
+      var title = document.getElementById('title');
+      var links = document.getElementById('links');
+      avatar.style.transition = 'transform .3s';
+      title.style.transition = 'transform .3s';
+      links.style.transition = 'transform .3s';
 
-        function showElement(e) {
-          e.style.transform = 'scale(1)';
-          e.style.opacity = 1;
-          e.style.height = '';
-        }
-
-        function hiddenElement(e) {
-          e.style.transform = 'scale(0)';
-          e.style.opacity = 0;
-          e.style.height = 0;
-        }
-
-        hiddenElement(links);
-        avatar.onclick = function () {
-          showElement(links);
-          hiddenElement(avatar);
-          hiddenElement(title);
-        };
-        document.body.onclick = function (e) {
-          if (e.target != avatar && e.target != links) {
-            hiddenElement(links);
-            showElement(avatar);
-            showElement(title);
-          }
-        };
-      } else {
-        document.getElementById('avatar').onclick = function () {
-          var links = document.getElementById('links');
-          links.classList.add('shake');
-          setTimeout(function () {
-            links.classList.remove('shake');
-          }, 1000);
-        }
+      function showElement(e) {
+        e.style.transform = 'scale(1)';
+        e.style.opacity = 1;
+        e.style.height = '';
       }
+
+      function hiddenElement(e) {
+        e.style.transform = 'scale(0)';
+        e.style.opacity = 0;
+        e.style.height = 0;
+      }
+
+      function fold() {
+        hiddenElement(links);
+        showElement(avatar);
+        showElement(title);
+      }
+      
+      function unfold() {
+        showElement(links);
+        hiddenElement(avatar);
+        hiddenElement(title);
+      }
+
+      hiddenElement(links);
+      avatar.onclick = unfold;
+      document.body.onclick = function (e) {
+        if (e.target != avatar && e.target != links) {
+          fold();
+        }
+      };
+      links.onclick = function () {
+        links.classList.add('shake');
+        setTimeout(function () { links.classList.remove('shake'); }, 1000);
+      }
+      
+      var typed = new Typed('#typed', {
+        strings: ["", "终身学习，独立思考", "Stay foolish, stay hungry!", "Holmofy"],
+        typeSpeed: 50,
+        startDelay: 2000,
+        backSpeed: 30,
+        onComplete: unfold
+      });
     })();
   </script>
 </body>
