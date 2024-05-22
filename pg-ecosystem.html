@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostgreSQL Ecosystem</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .core {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            text-align: center;
+        }
+
+        .core>h1 {
+            margin: 0;
+        }
+
+        .ecosystem {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .ecosystem>li:nth-child(1) {
+            --index: 0;
+        }
+
+        .ecosystem>li:nth-child(2) {
+            --index: 1;
+        }
+
+        .ecosystem>li:nth-child(3) {
+            --index: 2;
+        }
+
+        .ecosystem>li:nth-child(4) {
+            --index: 3;
+        }
+
+        .ecosystem>li:nth-child(5) {
+            --index: 4;
+        }
+
+        .ecosystem>li:nth-child(6) {
+            --index: 5;
+        }
+
+        .ecosystem>li:nth-child(7) {
+            --index: 6;
+        }
+
+        .ecosystem>li:nth-child(8) {
+            --index: 7;
+        }
+
+        .ecosystem>li {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            transform: rotate(calc(360deg/8*var(--index))) translateY(180px);
+        }
+
+        .ecosystem>li:before {
+            content: ' ';
+            display: block;
+            width: 180px;
+            height: 2px;
+            background: black;
+            transform: rotate(calc(360deg / 16* 5)) translate(108px, 41px);
+        }
+
+        .ecosystem>li>.detail>div {
+            transform: rotate(calc(360deg - 360deg/8*var(--index)));
+        }
+
+        .ecosystem>li>h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .ecosystem>li>h2:before {
+            content: ' ';
+            display: block;
+            width: 55%;
+            margin: 0 auto;
+            border-bottom: 2px solid black;
+        }
+
+        .ecosystem>li>h2:after {
+            content: ' ';
+            display: block;
+            width: 67%;
+            margin: 0 auto;
+            border-bottom: 2px solid black;
+        }
+
+        .ecosystem>li>.detail {
+            display: flex;
+            height: 200px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ecosystem>li>.detail>sub {
+            display: block;
+            width: 150px;
+            padding: 6px;
+            line-height: 1.6;
+        }
+
+        .ecosystem>li>.detail>sub>a {
+            padding: 1px 2px;
+            border-radius: 4px;
+            background-color: #00ffff;
+        }
+
+        .ecosystem>li>.detail>sub>a:hover {
+            background-color: #00bcd4a0;
+        }
+
+        .ecosystem>li>.detail>sub+div {
+            margin: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .ecosystem>li>.detail>sub+div>a {
+            padding: 4px;
+        }
+
+        .ecosystem>li>.detail img {
+            max-height: 50px;
+            max-width: 100px;
+        }
+
+        .ecosystem>li:nth-child(4)>h2,
+        .ecosystem>li:nth-child(5)>h2,
+        .ecosystem>li:nth-child(6)>h2,
+        .ecosystem>li:nth-child(4)>.detail>sub,
+        .ecosystem>li:nth-child(5)>.detail>sub,
+        .ecosystem>li:nth-child(6)>.detail>sub {
+            transform: rotate(180deg);
+        }
+
+        .ecosystem>li:nth-child(4)>h2:before,
+        .ecosystem>li:nth-child(5)>h2:before,
+        .ecosystem>li:nth-child(6)>h2:before {
+            width: 67%;
+        }
+
+        .ecosystem>li:nth-child(4)>h2:after,
+        .ecosystem>li:nth-child(5)>h2:after,
+        .ecosystem>li:nth-child(6)>h2:after {
+            width: 55%;
+
+        }
+
+        .ecosystem>li:nth-child(3)>.detail>div {
+            justify-content: end;
+        }
+
+        .ecosystem>li:nth-child(7)>.detail>div {
+            justify-content: start;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="core">
+        <a href="https://github.com/postgres/postgres"><img alt="PostgreSQL"
+                src="https://www.svgrepo.com/show/354200/postgresql.svg" height="100" /></a>
+        <h1>PostgreSQL<sup><a href="https://db-engines.com/en/ranking">4</a></sup></h1>
+        <ul class="ecosystem">
+            <li>
+                <h2>Time Series</h2>
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/tsdb">tsdb</a>
+                        <a href="https://github.com/topics/time-series">time-series</a>
+                        <a href="https://github.com/topics/time-series-database">time-series-database</a>
+                    </sub>
+                    <div>
+                        <a href="https://www.timescale.com/"><img alt="Timescale"
+                                src="https://www.timescale.com/static/ada2f38ead4be42ee298825fd543f66e/Timescale-Logo-Black-SVG.svg"
+                                height="100" /></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>AI</h2>
+
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/vector-search">vector-search</a>
+                        <a href="https://github.com/topics/vector-database">vector-database</a>
+                        <a href="https://github.com/topics/nearest-neighbor-search">nearest-neighbor-search</a>
+                        <a
+                            href="https://github.com/topics/approximate-nearest-neighbor-search">approximate-nearest-neighbor-search</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/pgvector/pgvector"><img alt="PGVector"
+                                src="https://www.svgrepo.com/show/306500/openai.svg" height="100" /></a>
+                        <a href="https://github.com/lanterndata/lantern"><img alt="lantern"
+                                src="https://avatars.githubusercontent.com/u/138075683?s=200&v=4" height="100" /></a>
+                        <a href="https://github.com/postgresml/postgresml"><img alt="postgresml"
+                                src="https://avatars.githubusercontent.com/u/103390393" height="100" /></a>
+                        <a href="https://github.com/apache/madlib"><img alt="madlib"
+                                src="https://madlib.apache.org/_media/logo-tricolor.png" height="100" /></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>OLAP</h2>
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/olap">olap</a>
+                        <a href="https://github.com/topics/mpp">mpp</a>
+                        <a href="https://github.com/topics/columnar-storage">columnar-storage</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/hydradatabase/hydra"><img alt="hydra"
+                                src="https://docs.hydra.so/~gitbook/image?url=https%3A%2F%2F3536174095-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FSsdY3GurP77jEOCTj4vA%252Ficon%252FQt1T9eJCGmVfy8dHo4YW%252Ffav.svg%3Falt%3Dmedia%26token%3D01740ba1-4949-4786-936d-18ba26ddf1c7&width=32&dpr=4&quality=100&sign=a071d30e6ba1625ba760ee146e72489de859061ce4b2976f7ca8ce87aaf9ec93"
+                                height="100" /></a>
+                        <a href="https://github.com/citusdata/citus"><img alt="citus"
+                                src="https://www.vectorlogo.zone/logos/citusdata/citusdata-ar21.svg" height="100" /></a>
+                        <a href="https://github.com/paradedb/paradedb"><img alt="paradedb"
+                                src="https://bookface-images.s3.amazonaws.com/logos/9d5faf0b75446517b8fc718add1df174701c1139.png"
+                                height="100" /></a>
+                        <a href="https://github.com/greenplum-db/gpdb"><img alt="greenplum"
+                                src="https://raw.githubusercontent.com/greenplum-db/gpdb/main/logo-greenplum.svg"
+                                height="100" /></a>
+
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>GEO Spatial</h2>
+
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/geospatial">geospatial</a>
+                        <a href="https://github.com/topics/postgis">postgis</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/postgis/postgis"><img alt="postgis"
+                                src="https://postgis.net/postgis-logo-horizontal.png" height="100" /></a>
+                        <a href="https://github.com/MobilityDB/MobilityDB"><img alt="MobilityDB"
+                                src="https://raw.githubusercontent.com/MobilityDB/MobilityDB/master/doc/images/mobilitydb-logo.svg"
+                                height="100" /></a>
+                        <a href="https://github.com/pgRouting/pgrouting"><img alt="pgrouting"
+                                src="https://pgrouting.org/_images/pgrouting.png" height="100" /></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>Graph</h2>
+
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/graphdb">graphdb</a>
+                        <a href="https://github.com/topics/graph-database">graph-database</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/apache/age"><img alt="Apache Age"
+                                src="https://camo.githubusercontent.com/29b0eddb3cf86f24a97a6e2f1ddfbc0e04b85fad7e165cd5848d4b0a8fb78ce0/68747470733a2f2f6167652e6170616368652e6f72672f6167652d6d616e75616c2f6d61737465722f5f7374617469632f6c6f676f2e706e67"
+                                height="100" /></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>Streaming</h2>
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/stream-processing">stream-processing</a>
+                        <a href="https://github.com/topics/materialized-view">materialized-view</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/MaterializeInc/materialize"><img alt="materialize"
+                                src="https://mma.prnewswire.com/media/1342791/materialize_logo_Logo.jpg?p=publish"
+                                height="20" /></a>
+                        <a href="https://github.com/risingwavelabs/risingwave"><img alt="risingwave"
+                                src="https://raw.githubusercontent.com/risingwavelabs/risingwave/main/.github/RisingWave-logo-light.svg"
+                                height="30" /></a>
+                        <a href="https://github.com/pipelinedb/pipelinedb"><img alt="pipelinedb"
+                                src="https://www.vectorlogo.zone/logos/pipelinedb/pipelinedb-ar21.svg"
+                                height="45" /></a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>Full-text</h2>
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/text-search">text-search</a>
+                        <a href="https://github.com/topics/full-text-search">full-text-search</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/zombodb/zombodb"><img alt="zombodb"
+                                src="https://www.zombodb.com/images/zombodb-illustration.png" height="100" /></a>
+                        <a href="https://github.com/pgroonga/pgroonga"><img alt="pgroonga"
+                                src="https://pgroonga.github.io/images/pgroonga-logo.png" height="30" /></a>
+                        <a href="https://github.com/paradedb/paradedb/tree/dev/pg_search"><img alt="pg_search"
+                                src="https://raw.githubusercontent.com/paradedb/paradedb/dev/docs/logo/pg_search.svg"
+                                height="100" /></a>
+                        <a href="https://github.com/postgrespro/rum"><img alt="pg_rum"
+                                src="https://raw.githubusercontent.com/postgrespro/rum/master/img/PGpro-logo.png"
+                                height="100" /></a>
+                        <a href="https://github.com/amutu/zhparser">zhparser</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>Derived</h2>
+                <div class="detail">
+                    <sub>
+                        <a href="https://github.com/topics/fdw">fdw</a>
+                        <a href="https://github.com/topics/foreign-data-wrapper">foreign-data-wrapper</a>
+                        <a href="https://github.com/topics/postgres">postgres</a>
+                        <a href="https://github.com/topics/postgresql-extension">postgresql-extension</a>
+                    </sub>
+                    <div>
+                        <a href="https://github.com/neondatabase/neon"><img alt="neondatabase"
+                                src="https://neon.tech/_next/static/svgs/33dd1fccd41c2d835c10e34013afbd84.svg"
+                                height="30" /></a>
+                        <a href="https://github.com/supabase/supabase"><img alt="supabase"
+                                src="https://www.vectorlogo.zone/logos/supabase/supabase-ar21.svg" height="40" /></a>
+                        <a href="https://github.com/PostgREST/postgrest"><img alt="postgrest"
+                                src="https://postgrest.org/en/v12/_images/logo.png" height="30" /></a>
+                        <a href="https://github.com/mindsdb/mindsdb"><img alt="mindsdb"
+                                src="https://mintlify.s3-us-west-1.amazonaws.com/mindsdb/logo/light.svg"
+                                height="20" /></a>
+                        <a href="https://github.com/tembo-io/tembo"><img alt="tembo"
+                                src="https://tembo.io/logoWithText.svg" height="20" /></a>
+                        <a href="https://github.com/FerretDB/FerretDB"><img alt="FerretDB"
+                                src="https://images.squarespace-cdn.com/content/v1/64d2360a0fd7326173013360/41825713-988f-44b8-99ad-50cb9f696cff/FerretDB_logo_blue_horizont.png?format=1500w"
+                                height="20" /></a>
+                        <a href="https://github.com/yugabyte/yugabyte-db"><img alt="yugabyte-db"
+                                src="https://www.yugabyte.com/wp-content/uploads/2023/04/yugabyte-logo.svg"
+                                height="20" /></a>
+                        <a href="https://github.com/orioledb/orioledb"><img alt="orioledb"
+                                src="https://www.orioledb.com/img/logo-horizontal.png" height="20" /></a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
