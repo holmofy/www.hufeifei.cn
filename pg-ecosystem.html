@@ -75,8 +75,11 @@
             height: 100px;
             position: absolute;
             transform: rotate(calc(360deg/8*var(--index))) translateY(180px);
+            z-index: 1;
         }
-
+        .ecosystem>li:hover {
+            z-index: 2;
+        }
         .ecosystem>li:before {
             content: ' ';
             display: block;
