@@ -137,13 +137,15 @@
             z-index: 3;
         }
 
-        .ecosystem>li>.detail>sub>a {
+        .ecosystem>li>.detail>sub>a,
+        .tag {
             padding: 1px 2px;
             border-radius: 4px;
             background-color: #00ffff;
         }
 
-        .ecosystem>li>.detail>sub>a:hover {
+        .ecosystem>li>.detail>sub>a:hover,
+        .tag:hover {
             background-color: #00bcd4a0;
         }
 
@@ -192,13 +194,93 @@
         .ecosystem>li:nth-child(7)>.detail>div {
             justify-content: start;
         }
+
+        #modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1050;
+            overflow: hidden;
+            outline: 0;
+            background: #1e1e1ecf;
+            display: none;
+        }
+
+        #modal.modal-show {
+            display: block;
+        }
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 1.75rem auto;
+            max-width: 500px;
+            pointer-events: none;
+        }
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3rem;
+            outline: 0;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem;
+        }
+
+        .modal-body {
+            position: relative;
+            flex: 1 1 auto;
+            padding: 1rem;
+        }
+
+        .modal-header .close {
+            padding: 1rem;
+            margin: -1rem -1rem -1rem auto;
+        }
+
+        .modal-title {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        button.close {
+            background-color: transparent;
+            border: 0;
+            -webkit-appearance: none;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+        }
     </style>
 </head>
 
 <body>
     <div class="core">
-        <a href="https://github.com/postgres/postgres"><img alt="PostgreSQL" src="./pg-ecosystem/postgresql.svg"
-                height="100"></a>
+        <a href="https://github.com/postgres/postgres" target="_blank"><img alt="PostgreSQL"
+                src="./pg-ecosystem/postgresql.svg" height="100"></a>
         <h1>PostgreSQL<sup><a href="https://db-engines.com/en/ranking">4</a></sup></h1>
         <ul class="ecosystem">
             <li>
@@ -210,8 +292,8 @@
                         <a href="https://github.com/topics/time-series-database">time-series-database</a>
                     </sub>
                     <div>
-                        <a href="https://www.timescale.com/"><img alt="Timescale" src="./pg-ecosystem/Timescale.svg"
-                                height="100"></a>
+                        <a href="https://github.com/timescale/timescaledb"><img alt="Timescale"
+                                src="./pg-ecosystem/Timescale.svg" height="100"></a>
                     </div>
                 </div>
             </li>
@@ -359,6 +441,62 @@
             </li>
         </ul>
     </div>
+    <div id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ProjectName</h5>
+                    <button type="button" class="close">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Woohoo, you're reading this text in a modal!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            const modal = document.getElementById("modal");
+            modal.querySelector("button.close").onclick = () => modal.classList.remove("modal-show");
+
+            const modalTitle = modal.querySelector("h5.modal-title");
+            const modalBody = modal.querySelector("div.modal-body");
+            document.querySelectorAll(".ecosystem>li>.detail>sub+div>a").forEach(function (project) {
+                project.onclick = function (e) {
+                    modal.classList.add("modal-show");
+                    const [, owner, repo] = /github.com\/([^/]+)\/([^/]+)/.exec(project.href);
+                    const url = `https://api.github.com/repos/${owner}/${repo}`;
+                    modalTitle.innerHTML = `${owner} / ${repo}`;
+                    modalBody.innerHTML = 'loading...';
+                    fetch(url).then((response) => response.json())
+                        .then(data => {
+                            const { description, homepage, stargazers_count, forks_count, language, owner = {}, topics = [] } = data;
+                            const { html_url: owner_url, login: owner_name, avatar_url } = owner;
+
+                            modalTitle.innerHTML = `
+                            <a href="${owner_url}" target="_blank">${owner_name}</a>
+                            /
+                            <a href="${project.href}" target="_blank">${repo}</a>
+                            <span class="tag">${language}</span>`;
+                            modalBody.innerHTML = `
+                                <div style="display:flex">
+                                    <a href="${owner_url}" target="_blank"><img src="${avatar_url}" alt="${owner_name}" width="100" height="100" style="padding:4px"/></a>
+                                    <p style="flex:1">${description}</p>
+                                </div>
+                                <a href="${homepage}">${homepage}</a>
+                                <p>Starred:${stargazers_count}, Fork:${forks_count}</p>
+                                <div>
+                                    ${topics.map(topic => `<sub class="tag"><a href="https://github.com/topics/${topic}" target="_blank">${topic}</a></sub>`).join('\n')}
+                                </div>
+                            `;
+                        }).catch(e => modalBody.innerHTML = 'Error')
+                    e.preventDefault()
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
