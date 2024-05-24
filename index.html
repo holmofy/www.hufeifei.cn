@@ -48,50 +48,12 @@
     }
 
     /* iconfont color */
-    .ic-weibo:before {
-      color: rgb(250, 0, 0);
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
     }
-
-    .ic-blog:before {
-      color: rgb(250, 65, 82);
-    }
-
-    .ic-csdn:before {
-      color: rgb(230, 0, 2);
-    }
-
-    .ic-github:before {
-      color: rgb(3, 4, 16);
-    }
-
-    .ic-qq:before {
-      color: rgb(71, 148, 253);
-    }
-
-    .ic-qzone:before {
-      color: rgb(254, 190, 32);
-    }
-
-    .ic-wechat:before {
-      color: rgb(2, 215, 55);
-    }
-
-    .ic-resume:before {
-      color: #CC8C8C;
-    }
-
-    .ic-favorites:before {
-      color: #CC8C8C;
-    }
-
-    .ic-sheet:before {
-      color: #317be8;
-    }
-
-    .ic-tools:before {
-      color: #000;
-    }
-    
     /* animation */
     .shake {
       animation: shake 0.82s cubic-bezier(.36, .07, .19, .97);
@@ -334,42 +296,50 @@
     <ul id="links">
       <li>
         <a id="blog" href="https://blog.hufeifei.cn" title="千里始足下 高山起微尘">
-          <i class="iconfont ic-blog"></i><span>Blog</span>
+          <svg class="icon" style="color:rgb(250, 65, 82)"><use xlink:href="#ic-blog"></use></svg>
+          <span>Blog</span>
         </a>
       </li>
       <li>
         <a id="favorites" href="https://posts.hufeifei.cn" title="见贤思齐 不贤自省">
-          <i class="iconfont ic-favorites"></i><span>Favorites</span>
+          <svg class="icon" style="color:#CC8C8C"><use xlink:href="#ic-favorites"></use></svg>
+          <span>Favorites</span>
         </a>
       </li>
       <li>
-        <a id="favorites" href="https://cs.hufeifei.cn" title="严于律己 宽于待人">
-          <i class="iconfont ic-sheet"></i><span>CheatSheets</span>
+        <a id="sheet" href="https://cs.hufeifei.cn" title="严于律己 宽于待人">
+          <svg class="icon" style="color:#317be8"><use xlink:href="#ic-sheet"></use></svg>
+          <span>CheatSheets</span>
         </a>
       </li>
       <li>
         <a id="csdn" href="http://blog.csdn.net/holmofy" title="但行好事 莫问前程">
-          <i class="iconfont ic-csdn"></i><span>CSDN</span>
+          <svg class="icon" style="rgb(230, 0, 2)"><use xlink:href="#ic-csdn"></use></svg>
+          <span>CSDN</span>
         </a>
       </li>
       <li>
         <a id="github" href="https://github.com/holmofy" title="乘风破浪会有事 直挂云帆济沧海">
-          <i class="iconfont ic-github"></i><span>Github</span>
+          <svg class="icon" style="rgb(3, 4, 16)"><use xlink:href="#ic-github"></use></svg>
+          <span>Github</span>
         </a>
       </li>
       <li>
         <a id="wechat" href="https://www.hufeifei.cn/wechat.html" title="人生到处知何似 应似飞鸿踏雪泥">
-          <i class="iconfont ic-wechat"></i><span>Wechat</span>
+          <svg class="icon" style="rgb(2, 215, 55)"><use xlink:href="#ic-wechat"></use></svg>
+          <span>Wechat</span>
         </a>
       </li>
       <li>
         <a id="hadoop" href="https://www.hufeifei.cn/hadoop-ecosystem.html" title="日拱一卒 功不唐捐">
-          <i class="iconfont ic-hadoop"></i><span>Hadoop</span>
+          <svg class="icon"><use xlink:href="#ic-hadoop"></use></svg>
+          <span>Hadoop</span>
         </a>
       </li>
       <li>
         <a id="postgresql" href="https://www.hufeifei.cn/pg-ecosystem.html" title="不积硅步无以至千里，不积小流无以成江海">
-          <i class="iconfont ic-PostgreSQL"></i><span>PostgreSQL</span>
+          <svg class="icon"><use xlink:href="#ic-PostgreSQL"></use></svg>
+          <span>PostgreSQL</span>
         </a>
       </li>
     </ul>
@@ -381,13 +351,13 @@
   </div>
   <div id="float-btns" draggable>
     <div id="matrix" class="float-btn">
-      <a href="#"><i class="iconfont ic-matrix"></i></a>
+      <a href="#"><svg class="icon"><use xlink:href="#ic-matrix"></use></svg></a>
     </div>
     <div id="gallery" class="float-btn">
-      <a href="#"><i class="iconfont ic-gallery"></i></a>
+      <a href="#"><svg class="icon"><use xlink:href="#ic-gallery"></use></svg></a>
     </div>
     <div id="theme" class="float-btn">
-      <a href="javascript:void(0)"><i class="iconfont ic-theme"></i></a>
+      <a href="javascript:void(0)"><svg class="icon"><use xlink:href="#ic-theme"></use></svg></a>
     </div>
   </div>
   <script>
