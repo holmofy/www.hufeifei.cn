@@ -54,6 +54,9 @@
        fill: currentColor;
        overflow: hidden;
     }
+    #links .icon{
+      width: 2em; height: 2em;
+    }
     /* animation */
     .shake {
       animation: shake 0.82s cubic-bezier(.36, .07, .19, .97);
@@ -314,19 +317,19 @@
       </li>
       <li>
         <a id="csdn" href="http://blog.csdn.net/holmofy" title="但行好事 莫问前程">
-          <svg class="icon" style="rgb(230, 0, 2)"><use xlink:href="#ic-csdn"></use></svg>
+          <svg class="icon" style="color:rgb(230, 0, 2)"><use xlink:href="#ic-csdn"></use></svg>
           <span>CSDN</span>
         </a>
       </li>
       <li>
         <a id="github" href="https://github.com/holmofy" title="乘风破浪会有事 直挂云帆济沧海">
-          <svg class="icon" style="rgb(3, 4, 16)"><use xlink:href="#ic-github"></use></svg>
+          <svg class="icon" style="color:rgb(3, 4, 16)"><use xlink:href="#ic-github"></use></svg>
           <span>Github</span>
         </a>
       </li>
       <li>
         <a id="wechat" href="https://www.hufeifei.cn/wechat.html" title="人生到处知何似 应似飞鸿踏雪泥">
-          <svg class="icon" style="rgb(2, 215, 55)"><use xlink:href="#ic-wechat"></use></svg>
+          <svg class="icon" style="color:rgb(2, 215, 55)"><use xlink:href="#ic-wechat"></use></svg>
           <span>Wechat</span>
         </a>
       </li>
@@ -694,12 +697,12 @@
           for (var i = 0; i < sibling.length; ++i) {
             sibling[i].style.transform = '';
           }
-          curr.querySelector('.iconfont').classList.replace('ic-close', 'ic-theme');
+          curr.querySelector('svg.icon>use').attributes["xlink:href"].value="#ic-theme";
         } else {
           for (var i = 0; i < sibling.length; ++i) {
             sibling[i].style.transform = 'translateY(' + (i * 60 - 120) + 'px)';
           }
-          curr.querySelector('.iconfont').classList.replace('ic-theme', 'ic-close');
+          curr.querySelector('svg.icon>use').attributes["xlink:href"].value="#ic-close";
         }
         themeToggle = !themeToggle;
       }
