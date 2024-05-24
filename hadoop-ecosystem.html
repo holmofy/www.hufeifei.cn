@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadoop Ecosystem</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            min-width: 1280px;
+            min-height: 700px;
+        }
+
+        figure {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        a {
+            display: inline-block;
+            padding: 4px;
+        }
+
+        .flex {
+            width: 100%;
+            display: flex;
+        }
+
+        .flex-column {
+            flex-direction: column;
+        }
+
+        .flex-1 {
+            flex: 1;
+        }
+
+        .row-1 {
+            height: 100px;
+        }
+
+        .row-2 {
+            height: 250px;
+        }
+
+        .row-3 {
+            height: 700px;
+        }
+
+        .col-1 {
+            width: 4.166%;
+        }
+
+        .col-2 {
+            width: 8.333%;
+        }
+
+        .col-3 {
+            width: 12.5%;
+        }
+
+        .col-4 {
+            width: 16.666%;
+        }
+
+        .col-5 {
+            width: 20.833%;
+        }
+
+        .col-6 {
+            width: 25%;
+        }
+
+        .col-8 {
+            width: 33.333%;
+        }
+
+        .col-9 {
+            width: 37.5%;
+        }
+
+        .col-12 {
+            width: 50%;
+        }
+
+        .col-16 {
+            width: 66.666%;
+        }
+
+        .col-24 {
+            width: 100%;
+        }
+
+        .center {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .card {
+            border-radius: 8px;
+            border: 2px solid black;
+            margin: 8px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card h3 {
+            position: absolute;
+            top: -30px;
+            left: 10px;
+            background: white;
+        }
+
+        figure>figcaption {
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: white;
+            font-weight: bold;
+        }
+
+        .card a {
+            margin: 6px;
+        }
+
+        .card figcaption a {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        #modal {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1050;
+            overflow: hidden;
+            outline: 0;
+            background: #1e1e1ecf;
+            display: none;
+        }
+
+        #modal.modal-show {
+            display: block;
+        }
+
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 1.75rem auto;
+            max-width: 500px;
+            pointer-events: none;
+        }
+
+        .modal-content {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            pointer-events: auto;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3rem;
+            outline: 0;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            border-top-left-radius: .3rem;
+            border-top-right-radius: .3rem;
+        }
+
+        .modal-body {
+            position: relative;
+            flex: 1 1 auto;
+            padding: 1rem;
+        }
+
+        .modal-header .close {
+            padding: 1rem;
+            margin: -1rem -1rem -1rem auto;
+        }
+
+        .modal-title {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        button.close {
+            background-color: transparent;
+            border: 0;
+            -webkit-appearance: none;
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+        }
+
+        .tag {
+            padding: 1px 2px;
+            border-radius: 4px;
+            background-color: #00ffff;
+        }
+
+        .tag:hover {
+            background-color: #00bcd4a0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex">
+        <div id="left" class="flex-1">
+            <div id="app row-1">
+                <figure class="flex-1 center card">
+                    <a href="https://github.com/apache/superset">
+                        <img alt="superset" src="./hadoop-ecosystem/superset.svg" height="30" />
+                    </a>
+                </figure>
+            </div>
+            <div class="flex flex-1">
+                <div id="oltp" class="card col-3">
+                    <h3>OLTP</h3>
+                    <figure class="flex-1 center card">
+                        <a href="https://github.com/apache/phoenix-tephra">
+                            <img alt="tephra" src="./hadoop-ecosystem/tephra.svg" height="30" />
+                        </a>
+                    </figure>
+                    <figure class="flex-1 center card">
+                        <a href="https://github.com/apache/Phoenix">
+                            <img alt="Phoenix" src="./hadoop-ecosystem/phoenix.svg" height="25" />
+                        </a>
+                    </figure>
+                    <figure class="flex-1 center card">
+                        <a href="https://github.com/apache/hbase">
+                            <img alt="hbase" src="./hadoop-ecosystem/hbase.svg" height="25" />
+                        </a>
+                        <a href="https://github.com/apache/Cassandra">
+                            <img alt="Cassandra" src="./hadoop-ecosystem/cassandra.svg" height="30" />
+                        </a>
+                        <a href="https://github.com/apache/Accumulo">
+                            <img alt="Accumulo" src="./hadoop-ecosystem/accumulo.svg" height="25" />
+                        </a>
+                        <a href="https://github.com/apache/asterixdb">
+                            <img alt="asterixdb" src="./hadoop-ecosystem/asterixdb.svg" height="25" />
+                        </a>
+                    </figure>
+                    <figure class="flex-1 center card">
+                        <a href="https://github.com/apache/fluo">
+                            <img alt="fluo" src="./hadoop-ecosystem/fluo.svg" height="30" />
+                        </a>
+                    </figure>
+                </div>
+                <div id="olap" class="flex-1 flex flex-column card">
+                    <h3>OLAP</h3>
+                    <div class="flex">
+                        <figure class="flex-1 center card">
+                            <a href="https://github.com/apache/beam">
+                                <img alt="beam" src="./hadoop-ecosystem/beam.svg" height="30" />
+                            </a>
+                        </figure>
+                        <figure class="flex-1 center card">
+                            <a href="https://github.com/apache/kudu">
+                                <img alt="kudu" src="./hadoop-ecosystem/kudu.svg" height="30" />
+                            </a>
+                            <a href="https://github.com/apache/hudi">
+                                <img alt="hudi" src="./hadoop-ecosystem/hudi.svg" height="30" />
+                            </a>
+                        </figure>
+                        <figure class="flex-1 center card">
+                            <a href="https://github.com/apache/celeborn">
+                                <img alt="celeborn" src="./hadoop-ecosystem/celeborn.svg" height="30" />
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-1 card flex-column">
+                            <h3>Batch</h3>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/apache/calcite">
+                                    <img alt="calcite" src="./hadoop-ecosystem/calcite.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/kyuubi">
+                                    <img alt="kyuubi" src="./hadoop-ecosystem/kyuubi.svg" height="30" />
+                                </a>
+                            </figure>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/apache/hive">
+                                    <img alt="Hive" src="./hadoop-ecosystem/hive.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/spark">
+                                    <img alt="Spark" src="./hadoop-ecosystem/spark.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/drill">
+                                    <img alt="drill" src="./hadoop-ecosystem/drill.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/hylin">
+                                    <img alt="Kylin" src="./hadoop-ecosystem/kylin.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/druid">
+                                    <img alt="Druid" src="./hadoop-ecosystem/druid.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/impala">
+                                    <img alt="impala" src="./hadoop-ecosystem/impala.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/apache/pinot">
+                                    <img alt="pinot" src="./hadoop-ecosystem/pinot.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/prestodb/presto">
+                                    <img alt="prestodb" src="./hadoop-ecosystem/prestodb.svg" height="30" />
+                                </a>
+                                <a href="https://github.com/trinodb/trino">
+                                    <img alt="trino" src="./hadoop-ecosystem/trino.svg" height="30" />
+                                </a>
+                            </figure>
+                            <div class="flex">
+                                <figure class="flex-1 center card">
+                                    <a href="https://github.com/apache/tez">
+                                        <img alt="Tez" src="./hadoop-ecosystem/tez.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/spark">
+                                        <img alt="Spark" src="./hadoop-ecosystem/spark.svg" height="30" />
+                                    </a>
+                                </figure>
+                                <figure class="col-7 center card">
+                                    <a href="https://github.com/apache/datafu">
+                                        <img alt="datafu" src="./hadoop-ecosystem/datafu.svg" height="20" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="flex">
+                                <figure class="flex-1 center card">
+                                    <a href="https://github.com/apache/arrow">
+                                        <img alt="Arrow" src="./hadoop-ecosystem/arrow.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/avro">
+                                        <img alt="Avro" src="./hadoop-ecosystem/avro.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/orc">
+                                        <img alt="ORC" src="./hadoop-ecosystem/orc.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/parquet-java">
+                                        <img alt="Parquet" src="./hadoop-ecosystem/parquet.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/carbondata">
+                                        <img alt="carbon" src="./hadoop-ecosystem/carbondata.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/iceberg">
+                                        <img alt="iceberg" src="./hadoop-ecosystem/iceberg.svg" height="30" />
+                                    </a>
+                                    <a href="https://github.com/apache/tsfile">
+                                        <img alt="tsfile" src="./hadoop-ecosystem/tsfile.svg" height="30" />
+                                    </a>
+                                </figure>
+                                <figure class="col-5 center card">
+                                    <a href="https://github.com/apache/bookkeeper">
+                                        <img alt="bookkeeper" src="./hadoop-ecosystem/bookkeeper.svg" height="30" />
+                                    </a>
+                                </figure>
+                            </div>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/apache/hadoop">
+                                    <img alt="Hadoop YARN" src="./hadoop-ecosystem/hadoop.svg" height="50" />
+                                </a>
+                                <a href="https://github.com/Alluxio/alluxio">
+                                    <img alt="Alluxio" src="./hadoop-ecosystem/alluxio.svg" height="50" />
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="col-8 card">
+                            <h3>Streaming</h3>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/apache/storm">
+                                    <img alt="storm" src="./hadoop-ecosystem/storm.svg" height="50" />
+                                </a>
+                            </figure>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/apache/flink">
+                                    <img alt="storm" src="./hadoop-ecosystem/flink.svg" height="50" />
+                                </a>
+                            </figure>
+                            <figure class="flex-1 center card">
+                                <a href="https://github.com/confluentinc/ksql">
+                                    <img alt="ksqldb" src="./hadoop-ecosystem/ksql.webp" height="50" />
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="storage" class="flex row-1">
+                <figure class="flex-1 center card">
+                    <a href="https://github.com/apache/hadoop">
+                        <img alt="Hadoop HDFS" src="./hadoop-ecosystem/hadoop.svg" height="50" />
+                    </a>
+                </figure>
+                <div class="col-10 card">
+                    <h3>MQ</h3>
+                    <figure class="center">
+                        <a href="https://github.com/apache/kafka">
+                            <img alt="Kafka" src="./hadoop-ecosystem/kafka.svg" height="50" />
+                        </a>
+                        <a href="https://github.com/apache/rocketmq">
+                            <img alt="RocketMQ" src="./hadoop-ecosystem/rocketmq.svg" height="50" />
+                        </a>
+                        <a href="https://github.com/apache/Pulsar">
+                            <img alt="Pulsar" src="./hadoop-ecosystem/pulsar.svg" height="40" />
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div id="ingestion" class="flex flex-column">
+                <div class="flex">
+                    <figure class="flex flex-1 card">
+                        <figcaption>Ingestion</figcaption>
+                        <a href="https://github.com/apache/seatunnel"><img src="./hadoop-ecosystem/seatunnel.svg"
+                                alt="seatunnel" height="50"></a>
+                        <a href="https://github.com/apache/inlong"><img src="./hadoop-ecosystem/inlong.svg" alt="inlong"
+                                height="50"></a>
+                    </figure>
+                </div>
+                <div class="flex">
+                    <figure class="flex card col-8">
+                        <figcaption>ETL</figcaption>
+                        <a href="https://github.com/apache/sqoop"><img src="./hadoop-ecosystem/sqoop.svg" alt="Scoop"
+                                height="40"></a>
+                        <a href="https://github.com/apache/gobblin"><img src="./hadoop-ecosystem/gobblin.svg"
+                                alt="gobblin" height="40"></a>
+                        <a href="https://github.com/alibaba/DataX"><img src="./hadoop-ecosystem/datax.webp" alt="DataX"
+                                height="40"></a>
+                    </figure>
+                    <figure class="flex card col-8">
+                        <figcaption>CDC</figcaption>
+                        <a href="https://github.com/debezium/debezium/">
+                            <img src="./hadoop-ecosystem/debezium.svg" alt="Debezium" height="40">
+                        </a>
+                        <a href="https://github.com/alibaba/canal">
+                            <img src="./hadoop-ecosystem/canal.svg" alt="Canal" height="40">
+                        </a>
+                    </figure>
+                    <figure class="flex card col-8">
+                        <figcaption>Log collector</figcaption>
+                        <a href="https://github.com/apache/logging-flume">
+                            <img src="./hadoop-ecosystem/flume.svg" alt="Flume" height="50">
+                        </a>
+                        <a href="https://github.com/fluent/fluentd">
+                            <img src="./hadoop-ecosystem/fluentd.svg" alt="fluentd" height="50">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div id="source" class="flex row-1">
+                <div class="flex col-16 card">
+                    <h3>RDB</h3>
+                    <figure class="flex flex-1">
+                        <a href="https://github.com/postgres/postgres">
+                            <img src="./hadoop-ecosystem/postgresql.svg" alt="PostgreSQL" height="50">
+                        </a>
+                        <a href="https://github.com/mysql/mysql-server">
+                            <img src="./hadoop-ecosystem/mysql.svg" alt="MySQL" height="50">
+                        </a>
+                    </figure>
+                    <div class="card col-6">
+                        <h3>Binlog / WAL</h3>
+                        <figure class="flex flex-1">
+                            <a href="https://github.com/shyiko/mysql-binlog-connector-java">
+                                <img src="./hadoop-ecosystem/binlog.svg" alt="mysql-binlog-connector-java" height="40">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-8 center card">
+                    <h3>App Log</h3>
+                    <figure class="flex flex-1">
+                        <a href="https://github.com/apache/logging-log4j2">
+                            <img src="./hadoop-ecosystem/log4j.svg" alt="log4j2" height="40">
+                        </a>
+                        <a href="https://github.com/qos-ch/logback">
+                            <img src="./hadoop-ecosystem/logback.png" alt="logback" height="40">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div id="right" class="col-3 card">
+            <h3>Manage</h3>
+            <figure class="card col-24">
+                <a href="https://github.com/apache/zookeeper">
+                    <img src="./hadoop-ecosystem/zookeeper.svg" alt="zookeeper" height="50">
+                </a>
+            </figure>
+            <figure class="card col-24">
+                <figcaption>Schedule</figcaption>
+                <a href="https://github.com/apache/airflow">
+                    <img src="./hadoop-ecosystem/airflow.svg" alt="airflow" height="40">
+                </a>
+                <a href="https://github.com/apache/dolphinscheduler">
+                    <img src="./hadoop-ecosystem/dolphinscheduler.svg" alt="dolphinscheduler" height="30">
+                </a>
+                <a href="https://github.com/apache/oozie">
+                    <img src="./hadoop-ecosystem/oozie.svg" alt="oozie" height="25">
+                </a>
+                <a href="https://github.com/azkaban/azkaban">
+                    <img src="./hadoop-ecosystem/azkaban.png" alt="azkaban" height="50">
+                </a>
+            </figure>
+            <figure class="card col-24">
+                <a href="https://github.com/apache/atlas">
+                    <img src="./hadoop-ecosystem/atlas.svg" alt="atlas" height="20">
+                </a>
+            </figure>
+            <figure class="card col-24">
+                <a href="https://github.com/apache/bigtop">
+                    <img src="./hadoop-ecosystem/bigtop.svg" alt="bigtop" height="50">
+                </a>
+            </figure>
+            <figure class="card col-24">
+                <a href="https://github.com/apache/ambari">
+                    <img src="./hadoop-ecosystem/ambari.svg" alt="ambari" height="30">
+                </a>
+            </figure>
+            <figure class="card col-24">
+                <a href="https://github.com/apache/knox">
+                    <img src="./hadoop-ecosystem/knox.svg" alt="knox" height="50">
+                </a>
+            </figure>
+        </div>
+    </div>
+    <div id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ProjectName</h5>
+                    <button type="button" class="close">
+                        <span>×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Woohoo, you're reading this text in a modal!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modal = document.getElementById("modal");
+            modal.querySelector("button.close").onclick = () => modal.classList.remove("modal-show");
+
+            const modalTitle = modal.querySelector("h5.modal-title");
+            const modalBody = modal.querySelector("div.modal-body");
+            document.querySelectorAll(".card a").forEach(function (project) {
+                project.onclick = function (e) {
+                    modal.classList.add("modal-show");
+                    const [, owner, repo] = /github.com\/([^/]+)\/([^/]+)/.exec(project.href);
+                    const url = `https://api.github.com/repos/${owner}/${repo}`;
+                    modalTitle.innerHTML = `${owner} / ${repo}`;
+                    modalBody.innerHTML = 'loading...';
+                    fetch(url).then((response) => response.json())
+                        .then(data => {
+                            const { description, homepage, stargazers_count, forks_count, language, owner = {}, topics = [] } = data;
+                            const { html_url: owner_url, login: owner_name, avatar_url } = owner;
+
+                            modalTitle.innerHTML = `
+                            <a href="${owner_url}" target="_blank">${owner_name}</a>
+                            /
+                            <a href="${project.href}" target="_blank">${repo}</a>
+                            <span class="tag">${language}</span>`;
+                            modalBody.innerHTML = `
+                                <div style="display:flex">
+                                    <a href="${owner_url}" target="_blank"><img src="${avatar_url}" alt="${owner_name}" width="100" height="100" style="padding:4px"/></a>
+                                    <p style="flex:1">${description}</p>
+                                </div>
+                                <a href="${homepage}">${homepage}</a>
+                                <p>Starred:${stargazers_count}, Fork:${forks_count}</p>
+                                <div>
+                                    ${topics.map(topic => `<sub class="tag"><a href="https://github.com/topics/${topic}" target="_blank">${topic}</a></sub>`).join('\n')}
+                                </div>
+                            `;
+                        }).catch(e => modalBody.innerHTML = 'Error')
+                    e.preventDefault()
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
