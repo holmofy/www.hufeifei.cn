@@ -1,152 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Ecosystem</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 0;
             width: 100vw;
-            height: 100vh;
             min-width: 1280px;
-            min-height: 700px;
-        }
-
-        figure {
-            margin: 0;
-            padding: 0;
-            position: relative;
+            background: #fbfbfd;
+            color: #1b1b1f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
         }
 
         a {
-            display: inline-block;
-            padding: 4px;
+            color: inherit;
         }
 
-        .flex {
-            width: 100%;
-            display: flex;
-        }
-
-        .flex-column {
-            flex-direction: column;
-        }
-
-        .flex-1 {
-            flex: 1;
-        }
-
-        .row-1 {
-            height: 100px;
-        }
-
-        .row-2 {
-            height: 250px;
-        }
-
-        .row-3 {
-            height: 700px;
-        }
-
-        .col-1 {
-            width: 4.166%;
-        }
-
-        .col-2 {
-            width: 8.333%;
-        }
-
-        .col-3 {
-            width: 12.5%;
-        }
-
-        .col-4 {
-            width: 16.666%;
-        }
-
-        .col-5 {
-            width: 20.833%;
-        }
-
-        .col-6 {
-            width: 25%;
-        }
-
-        .col-8 {
-            width: 33.333%;
-        }
-
-        .col-9 {
-            width: 37.5%;
-        }
-        
-        .col-10 {
-            width: 41.666%;
-        }
-
-        .col-12 {
-            width: 50%;
-        }
-
-        .col-16 {
-            width: 66.666%;
-        }
-
-        .col-24 {
-            width: 100%;
-        }
-
-        .mt-1 {
-            margin-top: 1rem !important;
-        }
-
-        .mt-2 {
-            margin-top: 2rem !important;
-        }
-
-        .center {
-            justify-content: center;
+        header {
             text-align: center;
+            padding: 28px 16px 8px;
         }
 
-        .card {
-            border-radius: 8px;
-            border: 2px solid black;
-            margin: 8px;
-            padding: 8px 0;
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: .5px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: #62626b;
+            font-size: 13px;
+        }
+
+        header p a {
+            margin: 0 5px;
+        }
+
+        .layer {
             position: relative;
+            margin: 22px 22px 0;
+            padding: 26px 12px 10px;
+            border: 1px solid #d8d8e0;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .layer-title {
+            position: absolute;
+            top: -13px;
+            left: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+        }
+
+        .layer-no {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .layer-desc {
+            margin: 0 0 10px;
+            color: #62626b;
+            font-size: 12px;
+        }
+
+        .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 22px;
+            color: #8b8b93;
+            font-size: 12px;
+        }
+
+        .flow::before,
+        .flow::after {
+            content: "";
+            flex: 1 1 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #dcdce6);
+        }
+
+        .flow::after {
+            background: linear-gradient(90deg, #dcdce6, transparent);
+        }
+
+        .flow b {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 12px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1px solid #e3e3ea;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .flow .arrow {
+            color: #b0b0bb;
+            font-size: 14px;
+        }
+
+        .row {
             display: flex;
             flex-wrap: wrap;
+            align-items: stretch;
         }
 
-        .card h3 {
-            position: absolute;
-            top: -30px;
-            left: 10px;
-            background: white;
-        }
-
-        figure>figcaption {
-            font-size: 15px;
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            background: white;
-            font-weight: bold;
-        }
-
-        .card a {
+        .box {
+            flex: 1 1 0;
+            min-width: 0;
             margin: 6px;
+            padding: 8px 10px 10px;
+            border: 1px solid #e2e2ea;
+            border-radius: 9px;
+            background: #fcfcfe;
         }
 
-        .card figcaption a {
-            margin: 0;
+        .box > h3 {
+            margin: 0 0 6px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: #44444c;
+            text-transform: uppercase;
+        }
+
+        .icons {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+            border-radius: 6px;
+            transition: background .15s ease;
+        }
+
+        .icons a:hover {
+            background: #ececf5;
+        }
+
+        .icons img {
+            display: block;
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .icons img.wide {
+            width: auto;
+            max-width: 104px;
+            height: 24px;
+        }
+
+        .icons img.sq {
+            border-radius: 6px;
+        }
+
+        .sub {
+            margin-top: 8px;
+            padding-top: 7px;
+            border-top: 1px dashed #e4e4ec;
+        }
+
+        .sub > span {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #62626b;
+        }
+
+        .l-hw .layer-title { background: #fff4e5; color: #9a5b00; }
+        .l-hw .layer-no { background: #e8890c; }
+        .l-hw .box { background: #fffdf8; border-color: #f3e2c8; }
+
+        .l-engine .layer-title { background: #e9f0ff; color: #1b4bb8; }
+        .l-engine .layer-no { background: #2f6bdc; }
+        .l-engine .box { background: #f8faff; border-color: #d5e0fb; }
+
+        .l-sched .layer-title { background: #f2ecfd; color: #6431c7; }
+        .l-sched .layer-no { background: #7c4ddb; }
+        .l-sched .box { background: #fbf9ff; border-color: #e0d6f8; }
+
+        .l-store .layer-title { background: #ffeef4; color: #b03060; }
+        .l-store .layer-no { background: #d9427c; }
+        .l-store .box { background: #fffafc; border-color: #f4d5e2; }
+
+        .l-api .layer-title { background: #eaf6f6; color: #0f6b6b; }
+        .l-api .layer-no { background: #149c9c; }
+        .l-api .box { background: #f7fdfd; border-color: #cfeaea; }
+
+        .l-app .layer-title { background: #fff0f3; color: #b02a47; }
+        .l-app .layer-no { background: #dd3f61; }
+        .l-app .box { background: #fffafb; border-color: #f6d7de; }
+
+        .rails {
+            display: flex;
+            gap: 22px;
+            margin: 22px 22px 0;
+            align-items: stretch;
+        }
+
+        .rail {
+            flex: 1 1 0;
+            padding: 12px 14px;
+            border: 1px solid #e3e3ea;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .rail h3 {
+            margin: 0 0 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #44444c;
+        }
+
+        .rail p {
+            margin: 6px 0 0;
+            color: #62626b;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        .rail code {
+            padding: 1px 4px;
+            border-radius: 4px;
+            background: #f0f0f6;
+            color: #44444c;
+            font-size: 11.5px;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            margin: 0 0 4px;
             padding: 0;
-            text-decoration: none;
-            color: black;
+            list-style: none;
+            font-size: 11.5px;
+            color: #62626b;
+        }
+
+        .legend li {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend i {
+            width: 11px;
+            height: 11px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        footer {
+            margin: 22px 22px 40px;
+            color: #8b8b93;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer a {
+            color: #4a6fd6;
         }
 
         #modal {
@@ -170,7 +319,7 @@
             position: relative;
             width: auto;
             margin: 1.75rem auto;
-            max-width: 500px;
+            max-width: 560px;
             pointer-events: none;
         }
 
@@ -181,7 +330,7 @@
             width: 100%;
             pointer-events: auto;
             background-color: #fff;
-            background-clip: padding-box;
+            background-clip: border-box;
             border: 1px solid rgba(0, 0, 0, .2);
             border-radius: .3rem;
             outline: 0;
@@ -211,6 +360,7 @@
         .modal-title {
             margin: 0;
             line-height: 1.5;
+            font-size: 16px;
         }
 
         button.close {
@@ -227,231 +377,394 @@
             color: #000;
             text-shadow: 0 1px 0 #fff;
             opacity: .5;
+            cursor: pointer;
         }
 
         .tag {
-            padding: 1px 2px;
+            padding: 1px 6px;
             border-radius: 4px;
-            background-color: #00ffff;
+            background-color: #eef1fb;
+            color: #2f4f9e;
+            font-size: 12px;
         }
 
         .tag:hover {
-            background-color: #00bcd4a0;
+            background-color: #dbe4fb;
         }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center">
-        Kubernetes Ecosystem
-        <br />
-        <sub style="font-size:12px"><a href="https://landscape.cncf.io/" target="_blank">CNCF</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.linuxfoundation.org/" target="_blank">Linux</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.lfai.foundation/" target="_blank">LFAI</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.aaif.io/" target="_blank">AAIF</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.graphql.org/" target="_blank">GraphQL</a></sub>
-        <sub style="font-size:12px"><a href="https://openapm.io/landscape" target="_blank">OpenAPM</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.riscv.org/" target="_blank">RISC-V</a></sub>
-        <sub style="font-size:12px"><a href="https://landscape.cd.foundation/" target="_blank">CI/CD</a></sub>
-    </h1>
-    <div id="main" class="flex">
-        <div class="flex flex-column">
-            <div class="flex row-1">
-                <figure class="card col-16">
-                    <figcaption>Admin Dashboard</figcaption>
-                    <a href="https://github.com/kubernetes/dashboard">
-                        <img src="./k8s-ecosystem/kubernetes.svg" alt="kubernetes dashboard" height="40">
-                    </a>
-                    <a href="https://github.com/portainer/portainer">
-                        <img src="./k8s-ecosystem/portainer.svg" alt="portainer" height="40">
-                    </a>
-                    <a href="https://github.com/rancher/rancher">
-                        <img src="./k8s-ecosystem/rancher.svg" alt="rancher" height="40">
-                    </a>
-                    <a href="https://github.com/kubesphere/kubesphere">
-                        <img src="./k8s-ecosystem/kubesphere.svg" alt="kubesphere" height="40">
-                    </a>
-                    <a href="https://github.com/zxh326/kite">
-                        <img src="https://kite-demo.zzde.me/assets/icon-BtDSB8Qs.svg" alt="kite" height="40">
-                    </a>
-                </figure>
-                <figure class="card col-4">
-                    <figcaption>Container Registry</figcaption>
-                    <a href="https://github.com/goharbor/harbor">
-                        <img src="./k8s-ecosystem/harbor.svg" alt="harbor" height="40">
-                    </a>
-                    <a href="https://github.com/dragonflyoss/dragonfly">
-                        <img src="./k8s-ecosystem/dragonfly.svg" alt="dragonfly" height="40">
-                    </a>
-                </figure>
-                <figure class="card col-4">
-                    <figcaption>App packages</figcaption>
-                    <a href="https://github.com/helm/helm">
-                        <img src="./k8s-ecosystem/helm.svg" alt="helm" height="40">
-                    </a>
-                    <a href="https://github.com/artifacthub/hub">
-                        <img src="./k8s-ecosystem/artifacthub.svg" alt="artifacthub" height="40">
-                    </a>
-                </figure>
-            </div>
-            <div class="flex row-1">
-                <figure class="card col-16">
-                    <figcaption>Scheduling & Orchestration</figcaption>
-                    <a href="https://github.com/kubernetes/kubernetes">
-                        <img src="./k8s-ecosystem/kubernetes.svg" alt="kubernetes" height="40">
-                    </a>
-                    <a href="https://github.com/k3s-io/k3s">
-                        <img src="./k8s-ecosystem/k3s.svg" alt="k3s" height="40">
-                    </a>
-                    <a href="https://github.com/moby/swarmkit">
-                        <img src="./k8s-ecosystem/swarm.svg" alt="swarm" height="40">
-                    </a>
-                    <a href="https://github.com/hashicorp/nomad">
-                        <img src="./k8s-ecosystem/nomad.svg" alt="nomad" height="40">
-                    </a>
-                    <a href="https://github.com/apache/mesos">
-                        <img src="./k8s-ecosystem/mesos.svg" alt="mesos" height="40">
-                    </a>
-                </figure>
-                <figure class="card col-8">
-                    <figcaption>OS</figcaption>
-                    <a href="https://github.com/alpinelinux/docker-alpine">
-                        <img src="./k8s-ecosystem/alpine.svg" alt="alpine" height="40">
-                    </a>
-                    <a href="https://github.com/Debian/apt">
-                        <img src="./k8s-ecosystem/debian.svg" alt="Debian" height="40">
-                    </a>
-                    <a href="https://github.com/ubuntu/yaru">
-                        <img src="./k8s-ecosystem/ubuntu.svg" alt="ubuntu" height="40">
-                    </a>
-                </figure>
-            </div>
-            <div id="interface" class="flex row-2">
-                <div class="card col-6 flex-1">
-                    <h3>CRI</h3>
-                    <a href="https://github.com/containerd/containerd">
-                        <img src="./k8s-ecosystem/containerd.svg" alt="containerd" height="40">
-                    </a>
-                    <a href="https://github.com/containers/podman">
-                        <img src="./k8s-ecosystem/podman.svg" alt="podman" height="40">
-                    </a>
-                    <a href="https://github.com/moby/moby">
-                        <img src="./k8s-ecosystem/docker.svg" alt="docker moby" height="40">
-                    </a>
-                    <a href="https://github.com/cri-o/cri-o">
-                        <img src="https://raw.githubusercontent.com/cri-o/cri-o/main/logo/crio-logo.svg" alt="cri-o" height="40">
-                    </a>
-                    <figure class="card">
-                        <figcaption><a href="https://github.com/opencontainers">OCI</a></figcaption>
-                        <a href="https://github.com/opencontainers/runc">
-                            <img src="https://avatars.githubusercontent.com/u/12563465?s=280&v=4" alt="runc" height="40">
-                        </a>
-                        <a href="https://github.com/youki-dev/youki">
-                            <img src="https://raw.githubusercontent.com/youki-dev/youki/main/docs/youki.png" alt="youki" height="40">
-                        </a>
-                    </figure>
+    <header>
+        <h1>AI 生态图 · AI Ecosystem</h1>
+        <p>
+            从硬件到应用的分层全景 ·
+            <a href="https://localai.io/docs/model-compatibility/" target="_blank">LocalAI</a>
+            <a href="https://inference.readthedocs.io/en/latest/user_guide/backends.html" target="_blank">Xinference Backends</a>
+            <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" target="_blank">Xinference Builtin</a>
+        </p>
+    </header>
+
+    <main>
+        <!-- ========== L1 应用层 Application ========== -->
+        <section class="layer l-app">
+            <div class="layer-title"><span class="layer-no">1</span>应用层 Application</div>
+            <p class="layer-desc">最终用户直接接触的产品形态，全部通过上一层标准接口调用模型</p>
+            <div class="row">
+                <div class="box">
+                    <h3>AI 应用平台</h3>
+                    <div class="icons">
+                        <a href="https://github.com/langgenius/dify" title="Dify"><img src="./ai-ecosystem/dify.svg" alt="Dify"></a>
+                        <a href="https://github.com/langchain-ai/langchain" title="LangChain"><img src="./ai-ecosystem/langchain.svg" alt="LangChain"></a>
+                        <a href="https://github.com/n8n-io/n8n" title="n8n"><img src="./ai-ecosystem/n8n.svg" alt="n8n"></a>
+                        <a href="https://github.com/open-webui/open-webui" title="Open WebUI"><img src="./ai-ecosystem/OpenWebUI.svg" alt="Open WebUI" class="wide"></a>
+                    </div>
                 </div>
-                <figure class="col-8 center card">
-                    <figcaption><a href="https://github.com/container-storage-interface">CSI</a></figcaption>
-                    <a href="https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner">
-                        <img src="./k8s-ecosystem/nfs.svg" alt="nfs" height="40">
-                    </a>
-                    <a href="https://github.com/openebs/openebs">
-                        <img src="./k8s-ecosystem/openebs.svg" alt="openebs" height="40">
-                    </a>
-                    <a href="https://github.com/ceph/ceph">
-                        <img src="./k8s-ecosystem/ceph.svg" alt="ceph" height="40">
-                    </a>
-                    <a href="https://github.com/gluster/glusterfs">
-                        <img src="./k8s-ecosystem/glusterfs.svg" alt="glusterfs" height="40">
-                    </a>
-                </figure>
-                <figure class="col-8 center card">
-                    <figcaption><a href="https://github.com/containernetworking">CNI</a></figcaption>
-                    <a href="https://github.com/flannel-io/flannel">
-                        <img src="./k8s-ecosystem/flannel.svg" alt="flannel" height="40">
-                    </a>
-                    <a href="https://github.com/projectcalico/calico">
-                        <img src="./k8s-ecosystem/calico.svg" alt="calico" height="40">
-                    </a>
-                    <a href="https://github.com/cilium/cilium">
-                        <img src="./k8s-ecosystem/cilium.svg" alt="cilium" height="40">
-                    </a>
-                </figure>
-            </div>
-            <div class="flex row-1">
-                <div class="flex card">
-                    <h3>Virtualization</h3>
-                    <a href="https://github.com/openstack/openstack">
-                        <img src="./k8s-ecosystem/openstack.svg" alt="openstack" height="40">
-                    </a>
-                    <a href="https://github.com/vmware/govmomi">
-                        <img src="./k8s-ecosystem/vSphere.svg" alt="vSphere" height="40">
-                    </a>
+                <div class="box">
+                    <h3>Coding Agent</h3>
+                    <div class="icons">
+                        <a href="https://github.com/anomalyco/opencode" title="opencode"><img src="./ai-ecosystem/opencode.svg" alt="opencode"></a>
+                        <a href="https://github.com/earendil-works/pi" title="Pi"><img src="./ai-ecosystem/pi.svg" alt="Pi"></a>
+                        <a href="https://github.com/acidsugarx/oh-my-pi" title="oh-my-pi"><img src="./ai-ecosystem/oh-my-pi.svg" alt="oh-my-pi" class="wide"></a>
+                    </div>
+                    <div class="sub">
+                        <span>应用框架 / 低代码</span>
+                        <div class="icons">
+                            <a href="https://github.com/gradio-app/gradio" title="Gradio"><img src="./ai-ecosystem/gradio.svg" alt="Gradio"></a>
+                            <a href="https://github.com/streamlit/streamlit" title="Streamlit"><img src="./ai-ecosystem/streamlit.svg" alt="Streamlit"></a>
+                            <a href="https://jupyter.org" title="Jupyter"><img src="./ai-ecosystem/jupyter.svg" alt="Jupyter"></a>
+                            <a href="https://github.com/microsoft/vscode" title="VS Code"><img src="./ai-ecosystem/visualstudiocode.svg" alt="VS Code"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>模型服务 / 交付</h3>
+                    <div class="icons">
+                        <a href="https://github.com/ollama/ollama" title="Ollama"><img src="./ai-ecosystem/ollama.svg" alt="Ollama"></a>
+                        <a href="https://github.com/xorbitsai/inference" title="Xinference"><img src="./ai-ecosystem/xinference.png" alt="Xinference" class="sq"></a>
+                        <a href="https://github.com/mudler/LocalAI" title="LocalAI"><img src="./ai-ecosystem/localai.png" alt="LocalAI" class="sq"></a>
+                        <a href="https://huggingface.co" title="Hugging Face"><img src="./ai-ecosystem/huggingface.svg" alt="Hugging Face"></a>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <div class="flow"><b>应用通过标准 API 发起请求 <span class="arrow">↓</span></b></div>
+
+        <!-- ========== L2 接口协议层 API &amp; Protocol ========== -->
+        <section class="layer l-api">
+            <div class="layer-title"><span class="layer-no">2</span>接口协议层 API &amp; Protocol</div>
+            <p class="layer-desc">对外暴露的协议与接口契约，屏蔽后端差异，是所有上层应用调用模型的唯一标准</p>
+            <div class="row">
+                <div class="box">
+                    <h3>协议规范</h3>
+                    <div class="icons">
+                        <a href="https://github.com/openai/openai-openapi" title="OpenAI API"><img src="./ai-ecosystem/openai.svg" alt="OpenAI API"></a>
+                        <a href="https://docs.anthropic.com" title="Anthropic API"><img src="./ai-ecosystem/anthropic.svg" alt="Anthropic API"></a>
+                        <a href="https://github.com/cohere-ai" title="Cohere API"><img src="./ai-ecosystem/cohere.svg" alt="Cohere API"></a>
+                        <a href="https://github.com/openai/openai-openapi" title="OpenAI 规范"><img src="./ai-ecosystem/openai.svg" alt="OpenAI 规范"></a>
+                    </div>
+                    <div class="sub">
+                        <span>协议子路径</span>
+                        <p style="margin:0;font-size:11.5px;color:#62626b;line-height:1.75">
+                            /v1/chat/completions · /v1/completions · /v1/embeddings · /v1/rerank<br>
+                            /v1/images/generations · /v1/audio/transcriptions · /v1/models
+                        </p>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>兼容协议</h3>
+                    <div class="icons">
+                        <a href="https://github.com/openai/openai-openapi" title="OpenAI Compatible"><img src="./ai-ecosystem/openai.svg" alt="OpenAI Compatible"></a>
+                        <a href="https://docs.anthropic.com" title="Anthropic Compatible"><img src="./ai-ecosystem/anthropic.svg" alt="Anthropic Compatible"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/user_guide/backends.html" title="Realtime"><img src="./ai-ecosystem/Realtime.svg" alt="Realtime" class="wide"></a>
+                        <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" title="SD WebUI API"><img src="./ai-ecosystem/StableDiffusion.svg" alt="SD WebUI API"></a>
+                    </div>
+                    <p style="margin:8px 0 0;font-size:11.5px;color:#62626b;line-height:1.7">统一请求 / 响应结构、流式 SSE、工具调用与结构化输出</p>
+                </div>
+                <div class="box">
+                    <h3>可观测性</h3>
+                    <div class="icons">
+                        <a href="https://github.com/open-telemetry" title="OpenTelemetry"><img src="./ai-ecosystem/opentelemetry.svg" alt="OpenTelemetry"></a>
+                        <a href="https://github.com/prometheus/prometheus" title="Prometheus"><img src="./ai-ecosystem/prometheus.svg" alt="Prometheus"></a>
+                        <a href="https://github.com/grafana/grafana" title="Grafana"><img src="./ai-ecosystem/grafana.svg" alt="Grafana"></a>
+                    </div>
+                    <p style="margin:8px 0 0;font-size:11.5px;color:#62626b;line-height:1.7">指标（TTFT / TPS / 排队时延）、链路追踪、审计日志</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="flow"><b>协议请求 <span class="arrow">↓</span> 模型路由与排队调度</b></div>
+
+        <!-- ========== L3 统一调度层 Unified Scheduling ========== -->
+        <section class="layer l-sched">
+            <div class="layer-title"><span class="layer-no">3</span>统一调度层 Unified Scheduling</div>
+            <p class="layer-desc">以 OpenAI 兼容协议为统一入口，负责模型注册、路由、多租户配额、弹性扩缩容与分布式编排</p>
+            <div class="row">
+                <div class="box">
+                    <h3>推理编排 / 网关</h3>
+                    <div class="icons">
+                        <a href="https://github.com/xorbitsai/inference" title="Xinference"><img src="./ai-ecosystem/xinference.png" alt="Xinference" class="sq"></a>
+                        <a href="https://github.com/mudler/LocalAI" title="LocalAI"><img src="./ai-ecosystem/localai.png" alt="LocalAI" class="sq"></a>
+                        <a href="https://github.com/triton-inference-server/server" title="Triton"><img src="./ai-ecosystem/triton.png" alt="Triton" class="sq"></a>
+                        <a href="https://github.com/kserve/kserve" title="KServe"><img src="./ai-ecosystem/kserve.png" alt="KServe" class="sq"></a>
+                        <a href="https://github.com/ray-project/ray" title="Ray"><img src="./ai-ecosystem/ray.svg" alt="Ray"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>容器编排</h3>
+                    <div class="icons">
+                        <a href="https://github.com/kubernetes/kubernetes" title="Kubernetes"><img src="./ai-ecosystem/kubernetes.svg" alt="Kubernetes"></a>
+                        <a href="https://github.com/docker" title="Docker"><img src="./ai-ecosystem/docker.svg" alt="Docker"></a>
+                        <a href="https://github.com/docker/compose" title="Compose"><img src="./ai-ecosystem/docker.svg" alt="Compose"></a>
+                    </div>
+                    <div class="sub">
+                        <span>弹性与扩缩容</span>
+                        <div class="icons">
+                            <a href="https://github.com/kserve/kserve" title="KServe"><img src="./ai-ecosystem/kserve.png" alt="KServe" class="sq"></a>
+                            <a href="https://github.com/ray-project/ray" title="Ray Serve"><img src="./ai-ecosystem/ray.svg" alt="Ray Serve"></a>
+                            <a href="https://github.com/vllm-project/vllm" title="Distributed Inference"><img src="./ai-ecosystem/vllm.svg" alt="Distributed Inference"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>流量治理 / 消息</h3>
+                    <div class="icons">
+                        <a href="https://github.com/apache/kafka" title="Kafka"><img src="./ai-ecosystem/apachekafka.svg" alt="Kafka"></a>
+                        <a href="https://github.com/redis" title="Redis"><img src="./ai-ecosystem/redis.svg" alt="Redis"></a>
+                        <a href="https://nats.io" title="NATS"><img src="./ai-ecosystem/NATS.svg" alt="NATS"></a>
+                        <a href="https://github.com/envoyproxy/envoy" title="Envoy"><img src="./ai-ecosystem/Envoy.svg" alt="Envoy"></a>
+                    </div>
+                    <p style="margin:8px 0 0;font-size:11.5px;color:#62626b;line-height:1.7">请求排队、限流、灰度路由、连续批处理调度、多副本负载均衡</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="flow"><b>任务分派到推理引擎实例 <span class="arrow">↓</span></b></div>
+
+        <!-- ========== L4 计算引擎层 Compute Engine ========== -->
+        <section class="layer l-engine">
+            <div class="layer-title"><span class="layer-no">4</span>计算引擎层 Compute Engine</div>
+            <p class="layer-desc">把模型权重加载进显存并执行前向推理的核心引擎，涵盖 LLM、多模态、语音、图像生成与传统 ML</p>
+            <div class="row">
+                <div class="box">
+                    <h3>LLM 推理引擎</h3>
+                    <div class="icons">
+                        <a href="https://github.com/ggml-org/llama.cpp" title="llama.cpp"><img src="./ai-ecosystem/llama_cpp.svg" alt="llama.cpp" class="wide"></a>
+                        <a href="https://github.com/vllm-project/vllm" title="vLLM"><img src="./ai-ecosystem/vllm.svg" alt="vLLM"></a>
+                        <a href="https://github.com/sgl-project/sglang" title="SGLang"><img src="./ai-ecosystem/sglang.png" alt="SGLang" class="sq"></a>
+                        <a href="https://github.com/ml-explore/mlx" title="MLX"><img src="./ai-ecosystem/mlx.png" alt="MLX" class="sq"></a>
+                        <a href="https://github.com/huggingface/transformers" title="Transformers"><img src="./ai-ecosystem/Transformers.svg" alt="Transformers" class="wide"></a>
+                        <a href="https://github.com/ollama/ollama" title="Ollama"><img src="./ai-ecosystem/ollama.svg" alt="Ollama"></a>
+                    </div>
+                    <div class="sub">
+                        <span>多模态 / 扩散 / 语音</span>
+                        <div class="icons">
+                            <a href="https://github.com/huggingface/diffusers" title="Diffusers"><img src="./ai-ecosystem/Diffusers.svg" alt="Diffusers" class="wide"></a>
+                            <a href="https://github.com/Stability-AI/StableDiffusion" title="Stable Diffusion"><img src="./ai-ecosystem/StableDiffusion.svg" alt="Stable Diffusion"></a>
+                            <a href="https://github.com/openai/whisper" title="Whisper"><img src="./ai-ecosystem/Whisper.svg" alt="Whisper" class="wide"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>模型能力矩阵</h3>
+                    <div class="icons">
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="LLM"><img src="./ai-ecosystem/Llama.svg" alt="LLM"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="Embedding"><img src="./ai-ecosystem/huggingface.svg" alt="Embedding"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="Rerank"><img src="./ai-ecosystem/Transformers.svg" alt="Rerank" class="wide"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="Image"><img src="./ai-ecosystem/StableDiffusion.svg" alt="Image"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="Audio"><img src="./ai-ecosystem/Whisper.svg" alt="Audio" class="wide"></a>
+                        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" title="Video"><img src="./ai-ecosystem/Video.svg" alt="Video"></a>
+                    </div>
+                    <div class="sub">
+                        <span>重点模型家族</span>
+                        <div class="icons">
+                            <a href="https://github.com/deepseek-ai" title="DeepSeek"><img src="./ai-ecosystem/deepseek.svg" alt="DeepSeek"></a>
+                            <a href="https://github.com/QwenLM" title="Qwen"><img src="./ai-ecosystem/qwen.svg" alt="Qwen"></a>
+                            <a href="https://github.com/meta-llama" title="Llama"><img src="./ai-ecosystem/Llama.svg" alt="Llama"></a>
+                            <a href="https://github.com/mistralai" title="Mistral"><img src="./ai-ecosystem/mistralai.svg" alt="Mistral"></a>
+                            <a href="https://github.com/anthropics" title="Claude"><img src="./ai-ecosystem/claude.svg" alt="Claude"></a>
+                            <a href="https://github.com/openai" title="OpenAI"><img src="./ai-ecosystem/openai.svg" alt="OpenAI"></a>
+                            <a href="https://github.com/google" title="Gemini"><img src="./ai-ecosystem/googlegemini.svg" alt="Gemini"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>推理优化</h3>
+                    <div class="icons">
+                        <a href="https://github.com/vllm-project/vllm" title="连续批处理 Continuous Batching"><img src="./ai-ecosystem/ContinuousBatching.svg" alt="连续批处理" class="wide"></a>
+                        <a href="https://github.com/vllm-project/vllm" title="PagedAttention"><img src="./ai-ecosystem/PagedAttention.svg" alt="PagedAttention" class="wide"></a>
+                        <a href="https://github.com/sgl-project/sglang" title="投机解码 Speculative Decoding"><img src="./ai-ecosystem/SpecDecoding.svg" alt="投机解码" class="wide"></a>
+                        <a href="https://github.com/mit-han-lab/llm-awq" title="量化 Quantization"><img src="./ai-ecosystem/Quantization.svg" alt="量化"></a>
+                        <a href="https://github.com/vllm-project/vllm" title="前缀缓存 Prefix Cache"><img src="./ai-ecosystem/PrefixCache.svg" alt="前缀缓存" class="wide"></a>
+                        <a href="https://github.com/ggml-org/llama.cpp" title="Auto NGL"><img src="./ai-ecosystem/AutoNGL.svg" alt="Auto NGL" class="wide"></a>
+                    </div>
+                    <p style="margin:8px 0 0;font-size:11.5px;color:#62626b;line-height:1.7">Xinference v1.6.1 起 llama.cpp 后端支持 Auto NGL 自动估算 GPU 层数；vLLM / SGLang 提供 PagedAttention 与连续批处理。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="flow"><b>从存储层加载权重 <span class="arrow">↓</span> 算子下发到硬件</b></div>
+
+        <!-- ========== L5 模型存储与格式层 Model Storage &amp; Format ========== -->
+        <section class="layer l-store">
+            <div class="layer-title"><span class="layer-no">5</span>模型存储与格式层 Model Storage &amp; Format</div>
+            <p class="layer-desc">模型权重的落盘格式、模型仓库与对象存储，以及向量索引与元数据管理</p>
+            <div class="row">
+                <div class="box">
+                    <h3>权重格式</h3>
+                    <div class="icons">
+                        <a href="https://github.com/ggml-org/ggml" title="GGUF"><img src="./ai-ecosystem/GGUF.svg" alt="GGUF"></a>
+                        <a href="https://github.com/huggingface/safetensors" title="safetensors"><img src="./ai-ecosystem/safetensors.svg" alt="safetensors" class="wide"></a>
+                        <a href="https://github.com/pytorch/pytorch" title="PyTorch"><img src="./ai-ecosystem/pytorch.svg" alt="PyTorch"></a>
+                        <a href="https://onnx.ai" title="ONNX"><img src="./ai-ecosystem/onnx.svg" alt="ONNX"></a>
+                        <a href="https://github.com/ggml-org/ggml" title="ggml"><img src="./ai-ecosystem/ggml.svg" alt="ggml"></a>
+                        <a href="https://github.com/mit-han-lab/llm-awq" title="AWQ"><img src="./ai-ecosystem/AWQ.svg" alt="AWQ"></a>
+                        <a href="https://github.com/IST-DASLab/gptq" title="GPTQ"><img src="./ai-ecosystem/GPTQ.svg" alt="GPTQ"></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>模型仓库 / 对象存储</h3>
+                    <div class="icons">
+                        <a href="https://huggingface.co" title="Hugging Face Hub"><img src="./ai-ecosystem/huggingface.svg" alt="Hugging Face"></a>
+                        <a href="https://modelscope.cn" title="ModelScope"><img src="./ai-ecosystem/modelscope.svg" alt="ModelScope"></a>
+                        <a href="https://min.io" title="MinIO"><img src="./ai-ecosystem/minio.svg" alt="MinIO"></a>
+                    </div>
+                    <div class="sub">
+                        <span>元数据 / 缓存</span>
+                        <div class="icons">
+                            <a href="https://github.com/postgres/postgres" title="PostgreSQL"><img src="./ai-ecosystem/postgresql.svg" alt="PostgreSQL"></a>
+                            <a href="https://github.com/redis" title="Redis"><img src="./ai-ecosystem/redis.svg" alt="Redis"></a>
+                            <a href="https://github.com/elastic/elasticsearch" title="Elasticsearch"><img src="./ai-ecosystem/elasticsearch.svg" alt="Elasticsearch"></a>
+                            <a href="https://github.com/ClickHouse/ClickHouse" title="ClickHouse"><img src="./ai-ecosystem/clickhouse.svg" alt="ClickHouse"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>向量索引 / RAG 存储</h3>
+                    <div class="icons">
+                        <a href="https://github.com/milvus-io/milvus" title="Milvus"><img src="./ai-ecosystem/milvus.svg" alt="Milvus"></a>
+                        <a href="https://github.com/qdrant/qdrant" title="Qdrant"><img src="./ai-ecosystem/qdrant.svg" alt="Qdrant"></a>
+                        <a href="https://github.com/chroma-core/chroma" title="Chroma"><img src="./ai-ecosystem/Chroma.svg" alt="Chroma"></a>
+                        <a href="https://github.com/weaviate/weaviate" title="Weaviate"><img src="./ai-ecosystem/Weaviate.svg" alt="Weaviate"></a>
+                        <a href="https://github.com/facebookresearch/faiss" title="FAISS"><img src="./ai-ecosystem/FAISS.svg" alt="FAISS"></a>
+                        <a href="https://github.com/meilisearch/meilisearch" title="Meilisearch"><img src="./ai-ecosystem/meilisearch.svg" alt="Meilisearch"></a>
+                        <a href="https://github.com/pgvector/pgvector" title="pgvector"><img src="./ai-ecosystem/pgvector.svg" alt="pgvector" class="wide"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="flow"><b>权重落盘与加速运行时 <span class="arrow">↓</span></b></div>
+
+        <!-- ========== L6 硬件接口层 Hardware &amp; Interface ========== -->
+        <section class="layer l-hw">
+            <div class="layer-title"><span class="layer-no">6</span>硬件接口层 Hardware &amp; Interface</div>
+            <p class="layer-desc">算力芯片与运行时接口：上层引擎通过统一的加速后端（CUDA / ROCm / SYCL / Vulkan / Metal）把算子下沉到具体硬件</p>
+            <div class="row">
+                <div class="box">
+                    <h3>GPU / NPU 加速</h3>
+                    <div class="icons">
+                        <a href="https://github.com/NVIDIA" title="NVIDIA"><img src="./ai-ecosystem/nvidia.svg" alt="NVIDIA"></a>
+                        <a href="https://github.com/ROCm" title="AMD ROCm"><img src="./ai-ecosystem/amd.svg" alt="AMD"></a>
+                        <a href="https://github.com/intel" title="Intel"><img src="./ai-ecosystem/intel.svg" alt="Intel"></a>
+                        <a href="https://developer.apple.com/metal/" title="Apple Metal"><img src="./ai-ecosystem/apple.svg" alt="Apple"></a>
+                        <a href="https://www.qualcomm.com" title="Qualcomm"><img src="./ai-ecosystem/qualcomm.svg" alt="Qualcomm"></a>
+                        <a href="https://www.arm.com" title="Arm"><img src="./ai-ecosystem/arm.svg" alt="Arm"></a>
+                        <a href="https://github.com/Ascend" title="Ascend NPU"><img src="./ai-ecosystem/Ascend.svg" alt="Ascend"></a>
+                        <a href="https://github.com/rockchip-linux" title="Rockchip NPU"><img src="./ai-ecosystem/RKLLM.svg" alt="RKLLM"></a>
+                        <a href="https://github.com/huawei" title="Huawei"><img src="./ai-ecosystem/huawei.svg" alt="Huawei"></a>
+                    </div>
+                    <div class="sub">
+                        <span>加速运行时 / API</span>
+                        <div class="icons">
+                            <a href="https://developer.nvidia.com/cuda" title="CUDA"><img src="./ai-ecosystem/CUDA.svg" alt="CUDA"></a>
+                            <a href="https://rocm.docs.amd.com" title="ROCm"><img src="./ai-ecosystem/ROCm.svg" alt="ROCm"></a>
+                            <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi.html" title="Intel SYCL"><img src="./ai-ecosystem/SYCL.svg" alt="SYCL"></a>
+                            <a href="https://www.khronos.org/vulkan/" title="Vulkan"><img src="./ai-ecosystem/vulkan.svg" alt="Vulkan"></a>
+                            <a href="https://developer.apple.com/metal/" title="Metal"><img src="./ai-ecosystem/Metal.svg" alt="Metal"></a>
+                            <a href="https://github.com/intel/openvino" title="OpenVINO"><img src="./ai-ecosystem/OpenVINO.svg" alt="OpenVINO"></a>
+                            <a href="https://github.com/NVIDIA/TensorRT" title="TensorRT"><img src="./ai-ecosystem/TensorRT.svg" alt="TensorRT"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>CPU 指令集</h3>
+                    <div class="icons">
+                        <a href="https://github.com/intel" title="AVX2"><img src="./ai-ecosystem/AVX2.svg" alt="AVX2"></a>
+                        <a href="https://github.com/intel" title="AVX-512"><img src="./ai-ecosystem/AVX512.svg" alt="AVX-512"></a>
+                        <a href="https://github.com/ggml-org/ggml" title="ggml"><img src="./ai-ecosystem/ggml.svg" alt="ggml"></a>
+                    </div>
+                    <div class="sub">
+                        <span>推理运行时内核</span>
+                        <div class="icons">
+                            <a href="https://github.com/ggml-org/llama.cpp" title="llama.cpp"><img src="./ai-ecosystem/llama_cpp.svg" alt="llama.cpp" class="wide"></a>
+                            <a href="https://github.com/ggml-org/ggml" title="ggml"><img src="./ai-ecosystem/ggml.svg" alt="ggml"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <h3>推理框架接口</h3>
+                    <div class="icons">
+                        <a href="https://github.com/microsoft/onnxruntime" title="ONNX Runtime"><img src="./ai-ecosystem/onnx.svg" alt="ONNX Runtime"></a>
+                        <a href="https://github.com/pytorch/pytorch" title="PyTorch"><img src="./ai-ecosystem/pytorch.svg" alt="PyTorch"></a>
+                        <a href="https://github.com/tensorflow/tensorflow" title="TensorFlow"><img src="./ai-ecosystem/tensorflow.svg" alt="TensorFlow"></a>
+                    </div>
+                    <div class="sub">
+                        <span>量化 / 压缩算子</span>
+                        <div class="icons">
+                            <a href="https://github.com/mit-han-lab/llm-awq" title="AWQ"><img src="./ai-ecosystem/AWQ.svg" alt="AWQ"></a>
+                            <a href="https://github.com/IST-DASLab/gptq" title="GPTQ"><img src="./ai-ecosystem/GPTQ.svg" alt="GPTQ"></a>
+                            <a href="https://github.com/NVIDIA" title="FP8"><img src="./ai-ecosystem/FP8.svg" alt="FP8"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="rails">
+        <div class="rail">
+            <h3>数据与检索</h3>
+            <ul class="legend">
+                <li><i style="background:#d9427c"></i>向量库</li>
+                <li><i style="background:#4169e1"></i>关系型</li>
+                <li><i style="background:#231f20"></i>消息与缓存</li>
+                <li><i style="background:#c72e49"></i>对象存储</li>
+                <li><i style="background:#ffcc01"></i>分析引擎</li>
+            </ul>
+            <p>
+                文档切分 → 向量化 → 写入向量索引 → Top-K 召回 → Rerank 重排 → 拼接上下文交给 LLM，
+                是最常见的推理链路之一，贯穿模型存储层与接口协议层。
+            </p>
         </div>
-        <div id="observability" class="flex col-6 card">
-            <h3>Observability</h3>
-            <a href="https://github.com/open-telemetry/opentelemetry-specification">
-                <img src="./k8s-ecosystem/opentelemetry.svg" alt="opentelemetry" height="40">
-            </a>
-            <a href="https://github.com/openobserve/openobserve">
-                <img src="./k8s-ecosystem/openobserve.svg" alt="openobserve" height="40">
-            </a>
-            <figure class="card col-24 flex-1">
-                <figcaption>Log</figcaption>
-                <a href="https://github.com/grafana/loki">
-                    <img src="./k8s-ecosystem/loki.svg" alt="loki" height="40">
-                </a>
-                <a href="https://github.com/Graylog2/graylog2-server">
-                    <img src="./k8s-ecosystem/graylog.svg" alt="graylog" height="40">
-                </a>
-            </figure>
-            <figure class="card col-24 flex-1">
-                <figcaption>Metrics</figcaption>
-                <a href="https://github.com/prometheus/prometheus">
-                    <img src="./k8s-ecosystem/prometheus.svg" alt="Prometheus" height="40">
-                </a>
-                <a href="https://github.com/grafana/mimir">
-                    <img src="./k8s-ecosystem/mimir.svg" alt="mimir" height="40">
-                </a>
-            </figure>
-            <figure class="card col-24 flex-1">
-                <figcaption>Tracing</figcaption>
-                <a href="https://github.com/grafana/tempo">
-                    <img src="./k8s-ecosystem/tempo.svg" alt="tempo" height="40">
-                </a>
-                <a href="https://github.com/apache/skywalking">
-                    <img src="./k8s-ecosystem/skywalking.svg" alt="skywalking" height="40">
-                </a>
-                <a href="https://github.com/elastic/apm-server">
-                    <img src="./k8s-ecosystem/elastic-apm.svg" alt="elastic-apm" height="40">
-                </a>
-                <a href="https://github.com/openzipkin/zipkin">
-                    <img src="./k8s-ecosystem/zipkin.svg" alt="zipkin" height="40">
-                </a>
-                <a href="https://github.com/pinpoint-apm/pinpoint">
-                    <img src="./k8s-ecosystem/pinpoint.svg" alt="pinpoint" height="40">
-                </a>
-                <a href="https://github.com/jaegertracing/jaeger">
-                    <img src="./k8s-ecosystem/jaeger.svg" alt="jaeger" height="40">
-                </a>
-            </figure>
-            <figure class="card col-24 flex-1">
-                <figcaption>Profiling</figcaption>
-                <a href="https://github.com/grafana/pyroscope">
-                    <img src="./k8s-ecosystem/pyroscope.svg" alt="pyroscope" height="40">
-                </a>
-                <a href="https://github.com/pixie-io/pixie">
-                    <img src="./k8s-ecosystem/pixie.svg" alt="pixie" height="40">
-                </a>
-                <a href="https://github.com/deepflowio/deepflow">
-                    <img src="./k8s-ecosystem/deepflow.svg" alt="deepflow" height="40">
-                </a>
-            </figure>
+        <div class="rail">
+            <h3>一次请求的完整路径</h3>
+            <p>
+                应用层发起 <code>/v1/chat/completions</code> → 接口协议层鉴权并规范化请求 →
+                统一调度层按模型名路由到合适的运行时实例并排队 → 计算引擎层把权重从模型存储层
+                （GGUF / safetensors / ONNX）加载到显存或内存 → 硬件接口层通过 CUDA / ROCm / SYCL / Vulkan / Metal
+                下发算子 → Token 逐个返回，全程由可观测性组件采集指标。
+            </p>
+        </div>
+        <div class="rail">
+            <h3>选型提示</h3>
+            <p>
+                同一模型常有多条推理路径：llama.cpp 适合 CPU 与边缘设备，vLLM / SGLang 适合 GPU 上的高吞吐服务，
+                MLX 面向 Apple Silicon。Xinference 与 LocalAI 会依据模型格式（GGUF / PyTorch / GPTQ / AWQ / FP8）
+                自动选择后端，也可通过配置文件显式指定。
+            </p>
         </div>
     </div>
+
+    <footer>
+        参考资料：
+        <a href="https://localai.io/docs/model-compatibility/" target="_blank">LocalAI 模型兼容性表</a> ·
+        <a href="https://inference.readthedocs.io/en/latest/user_guide/backends.html" target="_blank">Xinference 后端文档</a> ·
+        <a href="https://inference.readthedocs.io/en/latest/models/builtin/index.html" target="_blank">Xinference 内置模型</a> ·
+        <a href="https://inference.readthedocs.io/en/latest/models/index.html" target="_blank">Xinference 模型类型</a>
+    </footer>
+
     <div id="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -474,10 +787,14 @@
 
             const modalTitle = modal.querySelector("h5.modal-title");
             const modalBody = modal.querySelector("div.modal-body");
-            document.querySelectorAll(".card a").forEach(function (project) {
+            document.querySelectorAll(".icons a").forEach(function (project) {
                 project.onclick = function (e) {
+                    const match = /github.com\/([^/]+)\/([^/?#]+)/.exec(project.href);
+                    if (!match) {
+                        return;
+                    }
                     modal.classList.add("modal-show");
-                    const [, owner, repo] = /github.com\/([^/]+)\/([^/]+)/.exec(project.href);
+                    const [, owner, repo] = match;
                     const url = `https://api.github.com/repos/${owner}/${repo}`;
                     modalTitle.innerHTML = `${owner} / ${repo}`;
                     modalBody.innerHTML = 'loading...';
@@ -490,14 +807,14 @@
                             <a href="${owner_url}" target="_blank">${owner_name}</a>
                             /
                             <a href="${project.href}" target="_blank">${repo}</a>
-                            <span class="tag">${language}</span>`;
+                            <span class="tag">${language || ''}</span>`;
                             modalBody.innerHTML = `
-                                <div style="display:flex">
-                                    <a href="${owner_url}" target="_blank"><img src="${avatar_url}" alt="${owner_name}" width="100" height="100" style="padding:4px"/></a>
-                                    <p style="flex:1">${description}</p>
+                                <div style="display:flex;gap:12px;align-items:flex-start">
+                                    ${avatar_url ? `<a href="${owner_url}" target="_blank"><img src="${avatar_url}" alt="${owner_name}" width="72" height="72" style="padding:4px"/></a>` : ''}
+                                    <p style="flex:1;margin:0">${description || '暂无描述'}</p>
                                 </div>
-                                <a href="${homepage}">${homepage}</a>
-                                <p>Starred:${stargazers_count}, Fork:${forks_count}</p>
+                                ${homepage ? `<p><a href="${homepage}" target="_blank">${homepage}</a></p>` : ''}
+                                <p>Starred:${stargazers_count || 0}, Fork:${forks_count || 0}</p>
                                 <div>
                                     ${topics.map(topic => `<sub class="tag"><a href="https://github.com/topics/${topic}" target="_blank">${topic}</a></sub>`).join('\n')}
                                 </div>
